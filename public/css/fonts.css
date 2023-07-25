@@ -1,0 +1,64 @@
+@font-face {
+     font-family: 'RussoOne';
+     src: url(/fonts/RussoOne-Regular.eot?adb864e52fa979ebbd9599f38c62e7d0);
+     src: url(/fonts/RussoOne-Regular.eot?adb864e52fa979ebbd9599f38c62e7d0?#iefix) format('embedded-opentype'),
+         url(/fonts/RussoOne-Regular.woff2?e6300f10fda8613601f62f0f6689faf7) format('woff2'),
+         url(/fonts/RussoOne-Regular.woff?7eb57abeb22a44cdf7a77620dc23200e) format('woff'),
+         url(/fonts/RussoOne-Regular.ttf?c98db9c0238b37c935c6d3c7ae4ab3a7) format('truetype'),
+         url(/fonts/RussoOne-Regular.svg?0f25b0b1bbf1fb19d879bd3cf714e8cc#RussoOne-Regular) format('svg');
+     font-weight: normal;
+     font-style: normal;
+     font-display: swap;
+}
+
+@font-face {
+     font-family: 'PoppinsRegular';
+     src: url(/fonts/Poppins-Regular.eot?dd1ec14243b1116b57a0122c750e70e2);
+     src: url(/fonts/Poppins-Regular.eot?dd1ec14243b1116b57a0122c750e70e2?#iefix) format('embedded-opentype'),
+         url(/fonts/Poppins-Regular.woff2?7af2f3475b00a28bde717434fa52a160) format('woff2'),
+         url(/fonts/Poppins-Regular.woff?7d50cfcb7fdf5bd337a00be9d920a0b0) format('woff'),
+         url(/fonts/Poppins-Regular.ttf?9c4f95b9398348dfe7956c4a0f9c9e54) format('truetype'),
+         url(/fonts/Poppins-Regular.svg?aa0049efdfb9fd37e18d571d229e5b32#Poppins-Regular) format('svg');
+     font-weight: normal;
+     font-style: normal;
+     font-display: swap;
+}
+ 
+@font-face {
+     font-family: 'PoppinsBold';
+     src: url(/fonts/Poppins-Bold.eot?22cfe96ce2d603dcf200150ea410d489);
+     src: url(/fonts/Poppins-Bold.eot?22cfe96ce2d603dcf200150ea410d489?#iefix) format('embedded-opentype'),
+         url(/fonts/Poppins-Bold.woff2?a697dfc3aed4503729191d242f66fb98) format('woff2'),
+         url(/fonts/Poppins-Bold.woff?125974335c0c9046c212339e74ea95e0) format('woff'),
+         url(/fonts/Poppins-Bold.ttf?13c17db889176bed9ddfc9ed8f05ac31) format('truetype'),
+         url(/fonts/Poppins-Bold.svg?0c740a93b7f3d5120708dcff0bce2602#Poppins-Bold) format('svg');
+     font-weight: bold;
+     font-style: normal;
+     font-display: swap;
+}
+ 
+@font-face {
+     font-family: 'PoppinsSemiBold';
+     src: url(/fonts/Poppins-SemiBold.eot?7cf883b57c5e11dde3ebcc8f5d43dfdc);
+     src: url(/fonts/Poppins-SemiBold.eot?7cf883b57c5e11dde3ebcc8f5d43dfdc?#iefix) format('embedded-opentype'),
+         url(/fonts/Poppins-SemiBold.woff2?a54570378030882f61120a3b1f552952) format('woff2'),
+         url(/fonts/Poppins-SemiBold.woff?b5329103e193298fe15efe1d4eeb9e31) format('woff'),
+         url(/fonts/Poppins-SemiBold.ttf?d58757b9219ceb13da542273879fb783) format('truetype'),
+         url(/fonts/Poppins-SemiBold.svg?72a1dfce80fb9c335b4208caeae888b6#Poppins-SemiBold) format('svg');
+     font-weight: 600;
+     font-style: normal;
+     font-display: swap;
+}
+ 
+@font-face {
+     font-family: 'PoppinsMedium';
+     src: url(/fonts/Poppins-Medium.eot?f8914bc9601360360901ab3fbc482a4f);
+     src: url(/fonts/Poppins-Medium.eot?f8914bc9601360360901ab3fbc482a4f?#iefix) format('embedded-opentype'),
+         url(/fonts/Poppins-Medium.woff2?7666a4c81a6c292573a12e2c8576dc3a) format('woff2'),
+         url(/fonts/Poppins-Medium.woff?feec26f7a410bc253f7216db83c3d8d7) format('woff'),
+         url(/fonts/Poppins-Medium.ttf?990ec546d5595a28b7d0854f09b5fdb1) format('truetype'),
+         url(/fonts/Poppins-Medium.svg?a8c09dfc6c25666eb3050af71f933141#Poppins-Medium) format('svg');
+     font-weight: 500;
+     font-style: normal;
+     font-display: swap;
+}

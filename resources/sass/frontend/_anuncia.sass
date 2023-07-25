@@ -1,0 +1,133 @@
+.anunciaForm
+     padding: 5rem 0 5.5rem
+     .boxTitle
+          h2
+               
+               @media screen and (min-width: 1200px)
+                    // letter-spacing: -.05em
+                    font-size: 50px
+               @media screen and (min-width: 1400px)
+                    // letter-spacing: 0em
+                    font-size: 60px
+.pasosAnuncia
+     background: $blueDark2
+     position: relative
+     z-index: 10
+     padding: 2rem 0 5.5rem
+     @media screen and (min-width: 992px)
+          padding: 2rem 0 5.5rem
+     @media screen and (min-width: 1200px)
+          padding: 2rem 0 5.5rem
+     @media screen and (min-width: 1400px)
+          padding: 2rem 0 5.5rem
+     .boxCardPasos
+          > div
+               width: 50%
+               @media screen and (min-width: 992px)
+                    flex: 1 0
+                    width: auto
+          .cardImage
+               height: 112px
+               box-sizing: border-box
+               img
+                    width: 80px
+          .cardInfo
+               margin-top: .5rem
+               h2
+                    @include fontFree(white, 26px,24px,22px,16px, $fontTitle)
+                    text-align: center
+               h3
+                    @include fontFree(white, 14px,14px,12px,12px, $fontDescription)
+                    text-align: center
+                    line-height: 1.5em
+                    margin-top: .35rem
+                    @media screen and (min-width: 992px)
+                         line-height: 1.5em
+                    @media screen and (min-width: 1200px)
+                         line-height: 1.5em
+                    @media screen and (min-width: 1400px)
+                         line-height: 1.5em
+.pageAnuncia
+     background: $blue
+     overflow: hidden
+     .vinetas
+          padding-left: .95rem
+          .boxDescription
+               p
+                    position: relative
+                    padding-left: 1rem
+                    &:before
+                         content: ""
+                         position: absolute
+                         top: .5rem
+                         border-radius: 50%
+                         // transform: translateY(-50%)
+                         left: 0
+                         width: 8px
+                         height: 8px
+                         background: $yellow
+     .boxBackground
+          background-image: url('/frontend/images/anuncia.png')
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: center bottom
+     .boxContent
+          padding-top: 12rem
+          @media screen and (min-width: 992px)
+               padding-top: 18rem
+          @media screen and (min-width: 1200px)
+               padding-top: 18rem
+          @media screen and (min-width: 1400px)
+               padding-top: 18rem
+          .boxImageUser
+               display: none
+               @media screen and (min-width: 992px)
+                    display: block
+                    position: absolute
+                    bottom: -4rem
+                    left: 4rem
+                    bottom: -4rem
+               @media screen and (min-width: 1200px)
+                    bottom: -6.5rem
+               @media screen and (min-width: 1400px)
+                    bottom: -7rem
+               img
+                    width: 650px
+                    @media screen and (min-width: 992px)
+                         width: 700px
+                    @media screen and (min-width: 1200px)
+                         width: 720px
+                    @media screen and (min-width: 1400px)
+                         width: 850px
+.pageTerminos
+     background: $blue
+     overflow: hidden
+     .vinetas
+          padding-left: .95rem
+          .boxDescription
+               p
+                    position: relative
+                    padding-left: 1rem
+                    &:before
+                         content: ""
+                         position: absolute
+                         top: .5rem
+                         border-radius: 50%
+                         // transform: translateY(-50%)
+                         left: 0
+                         width: 8px
+                         height: 8px
+                         background: $yellow
+     .boxBackground
+          background-image: url('/frontend/images/anuncia.png')
+          background-size: contain
+          background-repeat: no-repeat
+          background-position: center top
+     .boxContent
+          padding-top: 12rem
+          @media screen and (min-width: 992px)
+               padding-top: 18rem
+          @media screen and (min-width: 1200px)
+               padding-top: 18rem
+          @media screen and (min-width: 1400px)
+               padding-top: 18rem

@@ -1,0 +1,165 @@
+.boxMarcaProducto
+     background: $blue
+     .boxContent
+          padding-top: 5rem
+          position: relative
+          z-index: 50
+          @media screen and (min-width: 992px)
+               padding-top: 4rem
+          @media screen and (min-width: 1200px)
+               padding-top: 4rem
+          @media screen and (min-width: 1400px)
+               padding-top: 4rem
+          .boxProductDetail
+               background: $blackDark
+               // padding: 3rem 0
+               overflow: hidden
+               border-radius: 10px
+               margin-bottom: 1.5rem
+               border: 0px solid red
+               .alingContent
+                    padding: 1rem 2rem 0rem
+                    @media screen and (min-width: 992px)
+                         padding: 1rem 1rem 0rem
+                    @media screen and (min-width: 1200px)
+                         padding: 1rem 2rem 0rem
+                    @media screen and (min-width: 1400px)
+                         padding: 1rem 2rem 0rem
+               .productFooter
+                    padding-bottom: 1rem
+                    background: $blackDark
+                    min-height: 80px
+                    a
+                         display: block
+                    &.alingContent
+                         padding-top: 2rem
+                         @media screen and (min-width: 992px)
+                              padding-top: 2.5rem
+                         @media screen and (min-width: 1200px)
+                              padding-top: 2.5rem
+                         @media screen and (min-width: 1400px)
+                              padding-top: 2.5rem
+                    
+                    .boxPrecio
+                         p
+                              @include fontFree(white, 16px,16px,15px,16px, $fontDescriptionBold)
+                    .boxSubTitle
+                         h3
+                              @include fontFree(white, 14px,14px,13px,14px, $fontDescriptionMedium)
+                         h2
+                              @include fontFree(white, 16px,16px,15px,16px, $fontDescriptionBold)
+                              text-transform: uppercase
+
+               .boxProductMain
+                    background: $yellowDark
+                    border-bottom-left-radius: 10px
+                    border-bottom-right-radius: 10px
+                    .productBody
+                         margin-top: 0rem
+                         position: relative
+                         bottom: -1.5rem
+                         min-height: 155px
+                         border: 0px solid red
+                         display: block
+                    .productHeader
+                         .boxImage
+                              margin-left: .5rem
+                              &.boxHeart
+                                   position: relative
+                                   width: 1.5rem
+                                   height: 1.5rem
+                                   cursor: pointer
+                                   svg
+                                        color: white
+                                        width: 1.5rem
+                                        height: 1.5rem
+                                        position: absolute
+                                        top: 0
+                                        left: 0
+                                        &.bi-heart-fill
+                                             opacity: 0
+                         h3
+                              @include fontFree(white, 16px,16px,16px,14px, $fontButtom)
+          .barProducts
+               margin-top: 1.5rem
+               margin-bottom: 3rem
+               > div
+                    background: #17214e
+                    padding: 1.5rem 2rem
+                    border-radius: 30px
+                    div
+                         &:last-child
+                              label
+                                   margin-right: .85rem
+                              .form-select
+                                   width: auto 
+                                   background-color: $purple
+                                   color: white
+                                   border: 1px solid $purple
+                                   border-radius: 10px
+                                   background-image: url('/frontend/images/cbxArrow.png')
+                                   background-size: 14px 8px
+                                   padding-left: 1.5rem
+                                   padding-right: 2.5rem
+                                   text-transform: uppercase
+                                   @include fontDescription(white)
+                                   line-height: 2rem
+                                   @media screen and (min-width: 992px)
+                                        line-height: 2rem
+                                   @media screen and (min-width: 1200px)
+                                        line-height: 2rem
+                                   @media screen and (min-width: 1400px)
+                                        line-height: 2rem
+               label
+                    @include fontDescription(white)
+          .boxTitle
+               h2
+                    text-transform: uppercase
+                    font-size: 35px
+                    @media screen and (min-width: 992px)
+                         font-size: 40px
+                    @media screen and (min-width: 1200px)
+                         font-size: 45px
+                    @media screen and (min-width: 1400px)
+                         font-size: 50px
+.boxPageNosotros
+     background: $blueDark
+     .boxContent
+          .boxInfo
+               margin-right: 0rem
+               width: 50%
+               margin-bottom: 1.5rem
+               @media screen and (min-width: 992px)
+                    width: auto
+                    margin-bottom: 0rem
+               &:last-child
+                    margin-right: 0
+               .boxImage
+                    margin: auto
+                    text-align: center
+                    img
+                         width: 57px
+               p
+                    @include fontFree(white, 12px,12px,12px,10px, $fontDescriptionBold)
+                    text-transform: uppercase
+                    &.txtNumber
+                         font-family: $fontDescription
+                         font-size: 52px
+                         @media screen and (min-width: 992px)
+                              font-size: 45px
+                         @media screen and (min-width: 1200px)
+                              font-size: 50px
+                         @media screen and (min-width: 1400px)
+                              font-size: 52px
+          .boxTitle
+               h2
+                    text-transform: uppercase
+                    font-size: 35px
+                    position: relative
+                    z-index: 10
+                    @media screen and (min-width: 992px)
+                         font-size: 40px
+                    @media screen and (min-width: 1200px)
+                         font-size: 45px
+                    @media screen and (min-width: 1400px)
+                         font-size: 50px

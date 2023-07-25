@@ -1,0 +1,104 @@
+$anchoPop: 226px
+.boxPopUp,
+.boxPopUp2,
+.boxPopUpMarca
+     background: rgba(66, 66, 66, 0.64)
+     position: fixed
+     z-index: 40
+     width: 100%
+     height: 100vh
+     top: 0
+     left: 0
+     display: none
+     .btnClosePopUp
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100vh
+          z-index: 4
+     &.active 
+          display: block
+     .popupContent
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%,-50%)
+          background: $black
+          z-index: 50
+          width: 90%
+          @media screen and (min-width: 992px)
+               width: auto
+          .boxButtom
+               margin-top: 1.75rem
+               a
+                    @include styleButton($black)
+          .boxTitle
+               h4
+                    @include fontFree(white, 14px,14px,14px,14px, 14px)
+               h3
+                    @include fontFree($black, 14px,14px,14px,14px, 14px)
+          .boxDescription
+               p
+                    &.small
+                         font-size: 10px
+                         @media screen and (min-width: 992px)
+                              font-size: 10px
+                         @media screen and (min-width: 1200px)
+                              font-size: 10px
+                         @media screen and (min-width: 1400px)
+                              font-size: 10px
+
+          .popupBody
+               background: white
+               .spaceButtom
+                    padding: 10px 20px 28px 20px
+               .boxScrollDescription
+                    padding: 35px 20px 28px 24px
+                    height: 317px
+                    overflow: scroll
+                    box-sizing: border-box
+                    @media screen and (min-width: 992px)
+                         padding: 35px 32px 28px 45px
+                    .boxMensaje
+                         height: auto 
+               
+          .boxButton
+               padding-top: 1.75rem
+               padding-bottom: 1.25rem
+               &.blanco
+                    margin-right: 1rem
+                    > div
+                         button
+                              width: 136px
+               > div
+                    button
+                         width: 136px
+          .popupHeader
+               height: 88px
+               > div
+                    height: 100%
+                    .boxContent
+                         height: 100%
+                         box-sizing: border-box
+                         .boxTitle
+                              padding-top: 24px
+                              padding-left: 24px 
+                              @media screen and (min-width: 992px)
+                                   padding-top: 25px
+                              h4
+                                   br
+                                        display: none
+                                        @media screen and (min-width: 992px)
+                                             display: block
+
+                    .boxLogo
+                         width: 96px
+                         height: 100%
+                         background: linear-gradient(180deg, rgba(0, 145, 222, 0.6) 0%, rgba(0, 145, 222, 0.546875) 8.85%, rgba(0, 145, 222, 0) 100%)
+                         picture
+                              img
+                                   width: 20px
+.contentBlur
+     &.active
+          filter: blur(4px)

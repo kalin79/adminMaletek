@@ -1,0 +1,280 @@
+.BannerMain
+     width: 100%
+     // height: 100vh
+     background: $blue
+     border: 0px solid red
+     overflow-x: clip
+     .boxTitle
+          h2
+               text-transform: uppercase
+               font-size: 35px
+               position: relative
+               z-index: 10
+               @media screen and (min-width: 992px)
+                    font-size: 40px
+               @media screen and (min-width: 1200px)
+                    font-size: 45px
+               @media screen and (min-width: 1400px)
+                    font-size: 50px
+     .boxLogoIso
+          position: absolute
+          left: 50%
+          top: 2rem
+          transform: translateX(-50%)
+          z-index: 40
+          img
+               width: 8rem
+     .boxIso
+          position: absolute
+          // bottom: 0rem
+          bottom: -17rem
+          right: 0
+          z-index: 2
+          border: 0px solid red
+          display: none
+          @media screen and (min-width: 992px)
+               display: block
+               bottom: -21rem
+               right: -11rem
+          @media screen and (min-width: 1200px)
+               bottom: -24rem
+               right: -7rem
+          @media screen and (min-width: 1400px)
+               bottom: -17rem
+               right: 0
+          img
+               width: 100%
+     .boxContent
+          position: relative
+          z-index: 3
+          padding-top: 8rem
+          padding-bottom: 3rem
+          @media screen and (min-width: 992px)
+               padding-top: 10rem
+               padding-bottom: 3rem
+          @media screen and (min-width: 1200px)
+               padding-top: 10rem
+               padding-bottom: 3rem
+          @media screen and (min-width: 1400px)
+               padding-top: 10rem
+               padding-bottom: 3rem
+          .boxGalley
+               border: 0px solid red
+               width: 100%
+               // height: 450px
+               box-sizing: border-box
+               margin-top: 4rem
+               position: relative
+               
+               .owl-theme 
+                    .owl-nav
+                         button
+                              position: absolute
+                              top: 35%
+                              transform: translateY(-50%)
+                              border: 0px solid red
+                              background: transparent
+                              &:hover,
+                              &:focus
+                                   background: transparent
+                              span 
+                                   width: 45px
+                                   height: 45px
+                                   background-repeat: no-repeat
+                                   background-position: center
+                                   background-size: cover
+                                   text-indent: 3000px
+                                   font-size: 0
+                                   display: block
+                                   @media screen and (min-width: 992px)
+                                        width: 30px
+                                        height: 30px
+                                   @media screen and (min-width: 1200px)
+                                        width: 30px
+                                        height: 30px
+                                   @media screen and (min-width: 1400px)
+                                        width: 50px
+                                        height: 50px
+                              &.owl-prev
+                                   left: 0rem
+                                   @media screen and (min-width: 992px)
+                                        left: 7.5rem
+                                   @media screen and (min-width: 1200px)
+                                        left: 7.5rem
+                                   @media screen and (min-width: 1400px)
+                                        left: 9.5rem
+                                   span
+                                        background-image: url('/frontend/images/prev.png')
+                              &.owl-next
+                                   right: 0rem
+                                   @media screen and (min-width: 992px)
+                                        right: 7.5rem
+                                   @media screen and (min-width: 1200px)
+                                        right: 7.5rem
+                                   @media screen and (min-width: 1400px)
+                                        right: 9.5rem
+                                   span
+                                        background-image: url('/frontend/images/next.png')
+
+                              
+                    .owl-dots 
+                         .owl-dot
+                              span
+                                   width: 16px
+                                   height: 16px
+                                   background: transparent
+                                   border: 2px solid $purple 
+                                   @media screen and (min-width: 992px)
+                                        width: 12px
+                                        height: 12px
+                              &.active
+                                   span
+                                        background: white
+               .owl-item
+                    &.center
+                         .boxInfo
+                              opacity: 1
+                              margin-top: .5rem
+                              @media screen and (min-width: 992px)
+                                   margin-top: 1.75rem
+
+                         .boxImage
+                              img
+                                   opacity: 1
+                                   transform: scale(1)
+                                   z-index: 2
+                                   @media screen and (min-width: 992px)
+                                        transform: scale(1.15)
+                                   // @media screen and (min-width: 1200px)
+                                   //      transform: scale(1.5)
+                                   // @media screen and (min-width: 1400px)
+                                   //      transform: scale(1.5)
+                    .boxImage
+                         width: 368px
+                         height: 100%
+                         border: 0px solid blue
+                         @media screen and (min-width: 992px)
+                              height: 100%
+                              width: 100%
+                         @media screen and (min-width: 1200px)
+                              height: 100%
+                         @media screen and (min-width: 1400px)
+                              height: 100%
+                         img
+                              width: 60%
+                              opacity: .75
+                              transform: scale(.45)
+                              position: relative
+                              z-index: 1
+                              @media screen and (min-width: 992px)
+                                   width: 100%
+                    .boxInfo
+                         opacity: 0
+                         h3
+                              @include fontFree(white, 18px,16px,16px,14px, $fontDescriptionBold)
+                              text-align: center
+                              line-height: 2.5rem
+                         h4
+                              @include fontFree(white, 28px,26px,26px,24px, $fontTitle)
+                              text-align: center
+                              line-height: 1.25rem
+                         h5
+                              @include fontFree(white, 16px,14px,14px,12px, $fontDescriptionMedium)
+                              text-align: center
+                              line-height: 1rem   
+          
+          .boxTitle
+               h3
+                    @include fontFree(white, 30px,36px,30px,25px, $fontTitle)
+                    text-transform: uppercase
+                    line-height: 1.25em
+               h1
+                    @include fontFree(white, 100px,90px,100px,60px, $fontTitle)
+                    text-transform: uppercase
+                    line-height: 1em
+                    margin-left: -.30rem
+                    @media screen and (min-width: 992px)
+                         line-height: .85em
+               &.mediun
+                    h3
+                         @include fontFree(white, 20px,18px,16px,16px, $fontTitle)
+                    h2
+                         @include fontFree(white, 70px,60px,70px,40px, $fontTitle)
+                         text-transform: uppercase
+                         line-height: 1em
+                         margin-left: -.30rem
+                         @media screen and (min-width: 992px)
+                              line-height: .9em
+                    &.separate
+                         margin-top: 3.5rem
+                         @media screen and (min-width: 992px)
+                              margin-top: 3.5rem
+                         @media screen and (min-width: 1200px)
+                              margin-top: 3.5rem
+                         @media screen and (min-width: 1400px)
+                              margin-top: 5.5rem
+
+
+          .boxLogo
+               width: 120px
+               position: relative
+               @media screen and (min-width: 992px)
+                    width: 200px
+               img
+                    width: 100%
+                         
+     .boxFullBanner
+          position: absolute
+          top: 0
+          left: 0
+          height: 100%
+          width: 100%
+          border: 0px solid red
+          img
+               width: 100%
+               height: 100%
+               object-fit: cover
+     .boxViewProduct
+          margin-top: -1rem
+          margin-bottom: 2rem
+          @media screen and (min-width: 992px)
+               margin-top: -8.5rem
+               margin-bottom: 0rem
+          @media screen and (min-width: 1200px)
+               margin-top: -8.5rem
+
+          .boxImage
+               width: 85%
+               @media screen and (min-width: 992px)
+                    width: 100%
+               @media screen and (min-width: 1200px)
+                    width: 100%
+     .boxDetailProduct
+          .boxPrecioProducto
+               p
+                    @include fontFree(white, 50px,45px,40px,35px, $fontDescriptionBold)
+          .boxDetailPrecio
+               border: 0px solid red
+               margin-top: 2.5rem
+               @media screen and (min-width: 992px)
+                    margin-top: 0rem
+               &.w45
+                    width: 100%
+                    @media screen and (min-width: 992px)
+                         width: 65%
+                    .boxButton
+                         width: auto !important
+                         button
+                              padding-left: 4rem
+                              padding-right: 4rem
+          .boxDescription2
+               p
+                    @include fontFree(white, 14px,14px,14px,12px, $fontDescription)
+
+          .boxSelectorColors
+               margin-top: 1rem
+               > div 
+                    a
+                         width: 30px
+                         height: 30px
+                         margin-right: .75rem

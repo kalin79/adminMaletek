@@ -1,0 +1,619 @@
+.boxInversion
+     background: $blue
+     .boxBackground
+          background-image: url('/frontend/images/fondoInversion.jpg')
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: 0 0
+          .boxSoat
+               margin-top: 3.75rem
+               a
+                    img
+                         max-width: 100%
+          .listButtons
+               .boxButton
+                    &:first-child
+                         margin-right: 0rem
+                         @media screen and (min-width: 992px)
+                              margin-right: 2rem
+.boxMotoNueva
+     background: $blue
+     overflow-x: clip
+     overflow-y: visible
+     width: 100%
+     box-sizing: border-box
+     .boxUserMoto
+          position: absolute
+          right: -10rem
+          bottom: 0
+          width: 400px
+          z-index: 70
+          display: block
+          @media screen and (min-width: 992px) 
+               width: 600px
+               display: block
+               right: -4rem
+          @media screen and (min-width: 1060px) 
+               width: 700px
+          @media screen and (min-width: 1200px) 
+               width: 800px
+          @media screen and (min-width: 1400px) 
+               width: 900px
+          img
+               max-width: 100%
+.boxBrands
+     background: $blue
+     margin-top: -5rem
+     .paddLeftCero
+          padding-left: 0
+          @media screen and (min-width: 992px) 
+               padding-left: calc(var(--bs-gutter-x) * 0.5)
+     .paddRightCero
+          padding-right: 0
+          @media screen and (min-width: 992px) 
+               padding-right: calc(var(--bs-gutter-x) * 0.5)
+     .boxTrapecio
+          position: absolute
+          top: auto
+          bottom: 0
+          right: 0rem
+          z-index: 10
+          display: none
+          @media screen and (min-width: 992px) 
+               top: auto
+               right: 0rem
+               display: block
+          @media screen and (min-width: 1200px) 
+               top: auto
+               right: 0rem
+          @media screen and (min-width: 1400px) 
+               top: auto
+               right: 0rem
+     .boxTriangle
+          position: absolute
+          top: 0
+          left: 0
+          z-index: 10
+          @media screen and (min-width: 992px)
+               left: -2rem
+          @media screen and (min-width: 1200px)
+               left: -2rem
+          @media screen and (min-width: 1400px)
+               left: -4rem
+          .triangle
+               border-width: 180px 180px 0 0
+               border-color: $yellow transparent transparent transparent
+               @media screen and (min-width: 992px)
+                    border-width: 400px 400px 0 0
+               @media screen and (min-width: 1200px)
+                    border-width: 500px 500px 0 0
+               @media screen and (min-width: 1400px)
+                    border-width: 600px 600px 0 0
+     .boxBackground
+          .boxBackgroundMotoo
+               background-image: url('/frontend/images/fondo-marca.jpg')
+               background-size: cover
+               background-repeat: no-repeat
+               background-position: right top
+               position: absolute
+               top: 0
+               right: 0
+               height: 100%
+               width: 100%
+          .boxContent
+               padding-top: 12rem
+               padding-left: .75rem
+               padding-right: .75rem
+               position: relative
+               z-index: 40
+               padding-bottom: 6rem
+               @media screen and (min-width: 992px)
+                    padding-top: 16rem
+                    // padding-left: 4rem
+                    padding-right: 0rem
+               .boxLogos
+                    padding-top: 3rem
+                    a
+                         width: 100px
+                         height: 90px
+                         border: 1px solid $grayLight3
+                         border-radius: 10px
+                         background: $whiteDark
+                         margin-left: 0rem
+                         margin-right: 0rem
+                         margin-bottom: .5rem
+                         @media screen and (min-width: 992px)
+                              width: 188px
+                              height: 118px
+                              margin-right: 0rem
+                              margin-bottom: 1.5rem
+                              margin-left: 0rem
+
+                         img
+                              max-width: 70%
+                              @media screen and (min-width: 992px)
+                                   max-width: 100%
+               .boxTitle
+                    h2
+                         text-transform: uppercase
+               .boxDescription
+                    &.separation
+                         padding-right: 0rem
+                         @media screen and (min-width: 992px)
+                              padding-right: 6.5rem
+                         @media screen and (min-width: 1200px)
+                              padding-right: 6.5rem
+                         @media screen and (min-width: 1400px)
+                              padding-right: 10.5rem
+
+.boxStyleBiker
+     background: $blue
+     .boxTrapecio
+          display: none
+          @media screen and (min-width: 992px)
+               display: block
+     .boxBackground
+          padding-top: 2rem
+          .container-fluid
+               .boxContent
+                    border: 0px solid red
+                    position: relative
+                    z-index: 60
+                    padding-bottom: 0
+                    .gallColumn
+                         border: 0px solid red
+                         
+                         &:first-child
+                              padding-right: 0rem
+                              margin-bottom: 1rem
+                              @media screen and (min-width: 992px)
+                                   padding-right: .5rem
+                                   margin-bottom: 0rem
+                              .contentGallery
+                                   padding-left: 0rem
+                                   padding-right: 0rem
+                                   padding-bottom: 2rem
+                                   @media screen and (min-width: 992px)
+                                        padding-right: 0rem
+                                        padding-bottom: 7.8rem
+                                   @media screen and (min-width: 1200px)
+                                        padding-right: 0rem
+                                        padding-bottom: 5.8rem
+                                   @media screen and (min-width: 1400px)
+                                        padding-right: 0rem
+                                        padding-bottom: 3.8rem
+                                   .boxSumilla
+                                        h3
+                                             text-align: center
+                                             line-height: 1.5em
+                                             @media screen and (min-width: 992px)
+                                                  text-align: left
+                                                  line-height: 1em
+                         .rowGallery
+                              .galleryMotor
+                                   margin-right: 0rem
+                                   margin-left: 0rem
+                                   @media screen and (min-width: 992px)
+                                        margin-right: .5rem
+                                        margin-left: .5rem
+                                   &:last-child
+                                        margin-right: 0rem
+                                        a
+                                             height: 100%
+                                             @media screen and (min-width: 992px)
+                                                  height: 100%
+                                             @media screen and (min-width: 1200px)
+                                                  height: 100%
+                                             @media screen and (min-width: 1400px)
+                                                  height: 99%
+                                   &.fullHeight
+                                        &:last-child
+                                             a
+                                                  height: 100%
+                                   .height3M
+                                        img
+                                             height: 200px
+                                             @media screen and (min-width: 992px)
+                                                  height: 100%
+                         .galleryMotor
+                              a
+                                   display: block
+                                   height: 280px
+                                   margin-bottom: 1rem
+                                   &:last-child
+                                        margin-bottom: 0rem
+                                    
+                                   .boxCard,
+                                   .cardBody,
+                                   .boxImage
+                                        height: 100%
+                                   .boxImage
+                                        overflow: hidden
+                                        position: relative
+                                        border: 0px solid red
+                                        background: $blue
+                                        .imgHover
+                                             position: absolute
+                                             top: 0
+                                             left: 0
+                                             width: 100%
+                                             opacity: 0
+                                             z-index: 4
+                                        &.heightComodin
+                                             img
+                                                  height: 100%
+                                                  @media screen and (min-width: 992px)
+                                                       height: 100%
+                                                  @media screen and (min-width: 1200px)
+                                                       height: 100%
+                                                  @media screen and (min-width: 1400px)
+                                                       height: 100%
+                                        img
+                                             object-fit: cover
+                                             height: 100%
+                                             transition: 0.5s ease-in-out transform
+                                             position: relative
+                                             z-index: 5
+                                   .cardFooter
+                                        position: absolute
+                                        bottom: 1.5rem
+                                        left: 1.5rem
+                                        z-index: 6
+                                        opacity: 1
+                                        transition: 0.5s ease-in-out all
+                                        @media screen and (min-width: 992px)
+                                             left: 1.5rem
+                                             opacity: 1
+                                        h2
+                                             @include fontFree($yellow, 22px,20px,20px,18px, $fontDescriptionBold)
+                                        p
+                                             @include fontFree(white, 16px,16px,14px,14px, $fontDescriptionMedium)
+                                   .cardHeader
+                                        position: absolute
+                                        right: 2.5rem
+                                        top: 2.5rem
+                                        z-index: 6
+                                   &:hover
+                                        .cardFooter
+                                             opacity: 1
+                                             left: 1.5rem
+                                        .boxImage
+                                             img
+                                                  transform: scale(1)
+
+
+
+               .boxCurveTitle
+                    position: absolute
+                    top: -25rem
+                    left: -13rem
+                    width: 615px
+                    height: 822px
+                    border: 0px solid red
+                    z-index: 50
+                    display: none
+                    @media screen and (min-width: 992px)
+                         top: -26rem
+                         left: -16rem
+                         display: block
+                    @media screen and (min-width: 1200px)
+                         top: -24rem
+                         left: -14rem
+                    @media screen and (min-width: 1400px)
+                         top: -24rem
+                         left: -9rem
+                    img
+                         width: 100%
+     .boxBackgroundIso
+          position: absolute
+          top: -0.5em
+          left: 0
+          z-index: 50
+          img
+               width: 300px
+               transform: scaleX(-1)
+               @media screen and (min-width: 992px)
+                    width: 650px
+               @media screen and (min-width: 1200px)
+                    width: 800px
+               @media screen and (min-width: 1400px)
+                    width: 900px
+
+
+.boxMoreSearch
+     background: $blue
+     .container-fluid
+          position: relative
+          z-index: 60
+          border: 0px solid red
+     .boxContent
+          .boxGalley
+               border: 0px solid red
+               width: 100%
+               // height: 450px
+               box-sizing: border-box
+               padding-top: 3rem
+               position: relative
+               @media screen and (min-width: 992px)
+                    padding-top: 0rem
+               .owl-carousel .owl-stage-outer
+                    padding-top: 0rem
+                    padding-bottom: 0rem
+               .owl-theme 
+                    .owl-nav
+                         button
+                              position: absolute
+                              top: 35%
+                              transform: translateY(-50%)
+                              border: 0px solid red
+                              background: transparent
+                              &:hover,
+                              &:focus
+                                   background: transparent
+                              span 
+                                   width: 45px
+                                   height: 45px
+                                   background-repeat: no-repeat
+                                   background-position: center
+                                   background-size: cover
+                                   text-indent: 3000px
+                                   font-size: 0
+                                   display: block
+                                   @media screen and (min-width: 992px)
+                                        width: 30px
+                                        height: 30px
+                                   @media screen and (min-width: 1200px)
+                                        width: 30px
+                                        height: 30px
+                                   @media screen and (min-width: 1400px)
+                                        width: 50px
+                                        height: 50px
+                              &.owl-prev
+                                   left: 0rem
+                                   @media screen and (min-width: 992px)
+                                        left: 7.5rem
+                                   @media screen and (min-width: 1200px)
+                                        left: 7.5rem
+                                   @media screen and (min-width: 1400px)
+                                        left: 9.5rem
+                                   span
+                                        background-image: url('/frontend/images/prev.png')
+                              &.owl-next
+                                   right: 0rem
+                                   @media screen and (min-width: 992px)
+                                        right: 7.5rem
+                                   @media screen and (min-width: 1200px)
+                                        right: 7.5rem
+                                   @media screen and (min-width: 1400px)
+                                        right: 9.5rem
+                                   span
+                                        background-image: url('/frontend/images/next.png')
+
+                              
+                    .owl-dots 
+                         .owl-dot
+                              span
+                                   width: 16px
+                                   height: 16px
+                                   background: transparent
+                                   border: 2px solid $purple 
+                                   @media screen and (min-width: 992px)
+                                        width: 12px
+                                        height: 12px
+                              &.active
+                                   span
+                                        background: white
+               .owl-item
+                    &.center
+                         .boxInfo
+                              opacity: 1
+                         .boxImage
+                              padding-top: 0rem
+                              @media screen and (min-width: 992px)
+                                   padding-top: 0rem
+                              img
+                                   opacity: 1
+                                   transform: scale(1)
+                                   z-index: 2
+                                   @media screen and (min-width: 992px)
+                                        transform: scale(1.15)
+                                   // @media screen and (min-width: 1200px)
+                                   //      transform: scale(1.4)
+                                   // @media screen and (min-width: 1400px)
+                                   //      transform: scale(1.3)
+                    .boxImage
+                         width: 368px
+                         height: 100%
+                         border: 0px solid blue
+                         @media screen and (min-width: 992px)
+                              height: 100%
+                              width: 100%
+                         @media screen and (min-width: 1200px)
+                              // height: 400px
+                              height: 100%
+                         @media screen and (min-width: 1400px)
+                              // height: 400px
+                              height: 100%
+                         img
+                              width: 60%
+                              opacity: .75
+                              transform: scale(.5)
+                              position: relative
+                              z-index: 1
+                              // top: 2rem
+                              @media screen and (min-width: 992px)
+                                   width: 100%
+                    .boxInfo
+                         opacity: 0
+                         margin-top: 1.75rem
+                         // @media screen and (min-width: 992px)
+                         //      margin-top: 2.2rem
+                         h3
+                              @include fontFree(white, 18px,16px,16px,14px, $fontDescriptionBold)
+                              text-align: center
+                              line-height: 2.5rem
+                         h4
+                              @include fontFree(white, 28px,26px,26px,24px, $fontTitle)
+                              text-align: center
+                              line-height: 1.25rem
+                         h5
+                              @include fontFree(white, 16px,14px,14px,12px, $fontDescriptionMedium)
+                              text-align: center
+                              line-height: 1rem
+          .boxSubTitle
+               z-index: 11
+               position: relative
+          .boxTitle
+               h2
+                    text-transform: uppercase
+                    z-index: 11
+                    position: relative
+                    text-align: center
+                    @media screen and (min-width: 992px)
+                         text-align: left
+                    &.flotante
+                         position: absolute
+                         bottom: -6.25rem
+                         left: -.5rem
+                         z-index: 10
+                    &.txtBorder
+                         color: transparent
+                         -webkit-text-stroke: 2px rgba($blueLight,.5)
+                         font-size: 150px
+                         @media screen and (min-width: 992px)
+                              font-size: 150px
+                         @media screen and (min-width: 1200px)
+                              font-size: 150px
+                         @media screen and (min-width: 1400px)
+                              font-size: 150px
+     .boxTriangle
+          position: absolute
+          top: 0
+          left: 0
+          z-index: 11
+     .boxBackgroundIso
+          position: absolute
+          top: -6rem
+          right: 0rem
+          z-index: 50
+          img
+               width: 300px
+               @media screen and (min-width: 992px)
+                    width: 650px
+               @media screen and (min-width: 1200px)
+                    width: 800px
+               @media screen and (min-width: 1400px)
+                    width: 900px
+
+     .boxBackground
+          background-image: url('/frontend/images/fondo_busquedas.png')
+          background-repeat: no-repeat
+          background-position: center
+          background-size: cover
+          width: 100vw
+.boxSearchHome
+     background: $blue
+     .boxIso
+          position: absolute
+          left: 50%
+          transform: translateX(-50%)
+          top: 1rem
+          z-index: 10
+          @media screen and (min-width: 992px)
+               top: 1rem
+          @media screen and (min-width: 1200px)
+               top: 1.5rem
+          @media screen and (min-width: 1400px)
+               top: 2.5rem
+          a
+               display: block
+               img
+                    width: 120px
+                    @media screen and (min-width: 992px)
+                         width: 80px
+                    @media screen and (min-width: 1200px)
+                         width: 90px
+                    @media screen and (min-width: 1400px)
+                         width: 120px
+     .boxBackground
+          background-image: url('/frontend/images/fondoMovil.png')
+          background-repeat: no-repeat
+          background-position: bottom center
+          background-size: cover
+          width: 100vw
+          min-height: 100vh
+          position: relative
+          @media screen and (min-width: 992px)
+               background-image: url('/frontend/images/fondo_search.png')
+          form
+               margin-top: 2.5rem
+               width: auto
+               margin-left: auto
+               margin-right: auto
+               @media screen and (min-width: 992px)
+                    margin-top: 2rem
+                    width: 420px
+               @media screen and (min-width: 1200px)
+                    margin-top: 3rem
+               @media screen and (min-width: 1400px)
+                    margin-top: 3rem
+               .boxLinea
+                    margin: 1rem auto 2rem
+                    width: 300px
+                    overflow: hidden
+                    @media screen and (min-width: 375px)
+                         width: 330px
+                    @media screen and (min-width: 992px)
+                         margin: 1.5rem 0 2.5rem
+                         width: 100%
+                    @media screen and (min-width: 1200px)
+                         margin: 2rem 0 3rem
+                    @media screen and (min-width: 1400px)
+                         margin: 2rem 0 3rem
+               .boxSearchInput
+                    margin: auto
+                    text-align: center
+                    width: 300px
+                    border: 3px solid rgba($purple, .5)
+                    height: 60px
+                    overflow: hidden
+                    border-radius: 30px
+                    position: relative
+                    display: block
+                    @media screen and (min-width: 375px)
+                         width: 330px
+                    @media screen and (min-width: 992px)
+                         width: 100%
+                    .svgIcon
+                         position: absolute
+                         width: 48px
+                         height: 48px
+                         border-radius: 50%
+                         background: $purple
+                         top: 50% 
+                         right: .25rem
+                         transform: translateY(-50%)
+                         svg
+                              width: 1.5rem
+                              height: 1.5rem
+                              color: white
+                              text-align: center
+                              margin-top: .7rem
+                    .InputText
+                         width: 100%
+                         height: 100%
+                         background: $bone
+                         border: 0
+                         padding-right: 5.5rem
+                         padding-left: 1.75rem
+                         p
+                              color: $gray
+                              text-align: left
+                              line-height: 3.5em
+                              font-family: $fontDescription
+                         &::placeholder
+                              color: $gray
+                         &:focus,
+                         &:hover
+                              outline: transparent
+                              box-shadow: none

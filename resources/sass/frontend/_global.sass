@@ -1,0 +1,597 @@
+a
+     &:focus,
+     &:hover
+          outline: transparent
+          box-shadow: none
+h1,
+h2,
+h3,
+p
+     margin: 0
+.boxImage
+     img
+          width: 100%
+.txtCenter
+     text-align: center !important
+
+.contentBlur
+     &.active
+          filter: blur(2px)
+.boxDescription
+     p
+          @include fontDescription(white)
+          &.bold
+               font-family: $fontDescriptionBold
+.fullwidth
+     width: 100% !important
+.marginLeft-1
+     margin-left: 1rem !important
+.boxButton
+     @include styleButton()
+     position: relative
+     z-index: 60
+     &.wmediun
+          width: 200px
+          button
+               // width: 200px
+               padding-left: 0
+               padding-right: 0
+     &.btnTransparen
+          button
+               border: 3px solid rgba(255,255,255,.85)
+               transition: .5s ease-in-out all
+          &:hover
+               button
+                    border: 3px solid rgba($yellow,.85)
+                    color: $yellow
+          button
+               background: transparent
+     &.btnSmall
+          width: 247px
+          height: 53px
+.boxButtonLink
+     @include styleButton()
+     a
+          display: block
+     &.wsmall
+          width: 250px
+     &.btnSmall
+          width: 247px
+          height: 53px
+.boxLink
+     a
+          @include styleLink($yellow, $yellow)
+          position: relative
+          &:after
+               content: ''
+               width: 100%
+               transition: .5s ease-in width
+               height: 1px
+               background: $yellow
+               position: absolute
+               bottom: 0
+               left: 0
+          &:hover
+               &:after
+                    content: ''
+                    width: 100%
+.boxTitle
+     h1,
+     h2
+          @include fontTitle(white)
+          
+.boxSubTitle
+     h2,
+     h3,
+     h4
+          @include fontSubTitle(white, $fontDescriptionMedium)
+     
+.relative
+     position: relative
+.fullHeight
+     height: 100% !important
+.notmL
+     margin-left: 0 !important
+.txtUpperCase
+     text-transform: uppercase !important
+.paddRightCero
+     padding-right: 0
+// Agregamos estilos personalizados
+.boxScrollDown
+     position: absolute
+     left: 50%
+     transform: translateX(-50%)
+     bottom: 1rem
+     z-index: 10
+     @media screen and (min-width: 992px)
+          bottom: 1.5rem
+     @media screen and (min-width: 1200px)
+          bottom: 2rem
+     @media screen and (min-width: 1400px)
+          bottom: 2.5rem
+     a
+          display: block
+          img
+               width: 60px
+               @media screen and (min-width: 992px)
+                    width: 60px
+               @media screen and (min-width: 1200px)
+                    width: 80px
+               @media screen and (min-width: 1400px)
+                    width: 100px
+.boxLinea
+     .linea
+          width: 2px
+          height: 2px
+          margin-right: .25rem
+          background: $grayLight
+          &:last-child
+               margin-right: 0
+
+
+.boxContent
+     padding-top: 3rem
+     padding-bottom: 3rem
+     @media screen and (min-width: 992px)
+          padding-top: 5rem
+          padding-bottom: 3rem
+     @media screen and (min-width: 1400px)
+          padding-top: 5rem
+          padding-bottom: 3rem
+     @media screen and (min-width: 1200px)
+          padding-top: 6rem
+          padding-bottom: 6rem
+.boxTrapecio
+     position: absolute
+     top: -4rem
+     right: 0rem
+     @media screen and (min-width: 992px) 
+          top: -4rem
+          right: 0rem
+     @media screen and (min-width: 1200px) 
+          top: -8rem
+          right: 0rem
+     @media screen and (min-width: 1400px) 
+          top: -11em
+          right: 0rem
+
+     img
+          width: 300px
+          @media screen and (min-width: 992px) 
+               width: 310px
+          @media screen and (min-width: 1200px) 
+               width: 410px
+          @media screen and (min-width: 1400px) 
+               width: 510px
+.boxTriangle
+     .triangle
+          width: 0
+          height: 0
+          border-style: solid
+          border-width: 150px 150px 0 0
+          border-color: $yellow transparent transparent transparent
+          @media screen and (min-width: 992px)
+               border-width: 350px 350px 0 0
+          @media screen and (min-width: 1200px)
+               border-width: 350px 350px 0 0
+          @media screen and (min-width: 1400px)
+               border-width: 420px 420px 0 0
+
+.txtColorGray
+     color: $grayDark !important
+.bgColorGrayLight2
+     background-color: $grayLight2 !important
+.sinborder
+     border: 0 !important
+a
+     text-decoration: none
+.boxSelectorColors
+     margin-top: 1rem
+     &.big
+          > div
+               a
+                    width: 24px
+                    height: 24px
+                    margin-right: .5rem
+     > div
+          a
+               width: 15px
+               height: 15px
+               margin-right: .35rem
+               border-radius: 50%
+               overflow: hidden
+               background-color: blue
+               border: 2px solid white
+               &.active
+                    border: 2px solid $yellow
+               &:last-child
+                    margin-right: 0
+.boxBanda
+     position: absolute
+     top: 0
+     left: -15.25rem
+     img
+          max-width: 100%
+.pageProductoVideo
+     background: $blue
+     .boxVideo
+          width: 100%
+          height: 400px
+          iframe
+               width: 100%
+               height: 100%
+.boxContentRangePrice
+     .range-title
+          @include fontFree(white, 16px,16px,16px,16px, $fontDescriptionBold)
+          text-transform: uppercase
+          line-height: 1em
+     .box-minmax
+          @include fontFree(white, 30px,30px,30px,30px, $fontDescription)
+          margin-top: 4px
+          width: 208px
+          display: flex
+          justify-content: space-between
+     .boxRangePrice
+          display: flex
+          flex-direction: column
+          align-items: center
+          justify-content: center
+          &.bgblack
+               .rs-range
+                    &::-moz-range-track
+                         background: red
+                    &::-webkit-slider-thumb
+                         background-image: url(/frontend/images/drag2.png)
+                         box-shadow: 0px 10px 10px rgba(0,0,0,0)
+                    &::-moz-range-thumb
+                         background-image: url(/frontend/images/drag2.png)
+                         box-shadow: 0px 10px 10px rgba(0,0,0,0)
+          .range-slider
+               width: 200px
+               border: 0px solid red
+               position: relative
+               .ping
+                    position: absolute
+                    bottom: .15rem
+                    left: 0
+                    width: 3px
+                    height: 5px
+                    background: $yellow
+                    z-index: 1
+                    span
+                         position: absolute
+                         top: 1rem
+                         left: 0rem
+                         width: 50px
+                         display: block
+                         border: 0px solid red
+                         text-align: center
+                         @include fontFree($grayLight4, 10px,10px,10px,10px, $fontDescriptionMedium)
+                         &.posder
+                              left: -3rem
+                    &.ping0
+                         left: 0%
+                    &.ping1
+                         left: 25%
+                    &.ping2
+                         left: 50%
+                    &.ping3
+                         left: 75%
+                    &.ping4
+                         left: 98.5%
+          .rs-range
+               margin-top: 16px
+               width: 200px
+               -webkit-appearance: none
+               position: relative
+               z-index: 10
+               &:focus
+                    outline: none
+               &::-webkit-slider-runnable-track
+                    width: 100%
+                    height: 3px
+                    cursor: pointer
+                    box-shadow: none
+                    background: $yellow
+                    border-radius: 0px
+                    border: 0px solid #010101
+               &::-moz-range-track
+                    width: 100%
+                    height: 1px
+                    cursor: pointer
+                    box-shadow: none
+                    background: #ffffff
+                    border-radius: 0px
+                    border: 0px solid #010101
+               &::-webkit-slider-thumb
+                    box-shadow: none
+                    border: 0px solid red
+                    box-shadow: 0px 10px 10px rgba(0,0,0,0.25)
+                    height: 24px
+                    width: 10px
+                    border-radius: 0px
+                    // background: rgba(255,255,255,1)
+                    background-image: url(/frontend/images/drag.png)
+                    background-position: center
+                    background-repeat: no-repeat
+                    cursor: pointer
+                    -webkit-appearance: none
+                    margin-top: -10px
+               &::-moz-range-thumb
+                    box-shadow: none
+                    border: 0px solid #ffffff
+                    box-shadow: 0px 10px 10px rgba(0,0,0,0.25)
+                    height: 24px
+                    width: 10px
+                    border-radius: 0px
+                    // background: rgba(255,255,255,1)
+                    background-image: url(/frontend/images/drag.png)
+                    background-position: center
+                    background-repeat: no-repeat
+                    cursor: pointer
+                    -webkit-appearance: none
+                    margin-top: -10px
+               &::-moz-focus-outer
+                    border: 0
+          .rs-label
+               position: relative
+               transform-origin: center center
+               display: none
+               width: 98px
+               height: 98px
+               background: transparent
+               border-radius: 50%
+               line-height: 30px
+               text-align: center
+               font-weight: bold
+               padding-top: 22px
+               box-sizing: border-box
+               border: 2px solid #fff
+               margin-top: 20px
+               margin-left: -38px
+               left: attr(value)
+               color: #fff
+               font-style: normal
+               font-weight: normal
+               line-height: normal
+               font-size: 36px
+               &::after
+                    content: "kg"
+                    display: block
+                    font-size: 20px
+                    letter-spacing: 0.07em
+                    margin-top: -2px
+.noHidden
+     overflow: visible !important
+.sliderBarRange
+     margin: 1rem 3.5rem 1.75rem
+     @media screen and (min-width: 992px)
+          margin: 1rem 2rem 1.75rem
+     &.bgBlack
+          margin: 0rem 3.5rem 1.75rem
+          @media screen and (min-width: 992px)
+               margin: 0rem 2rem 1.75rem
+          .irs--flat .irs-handle
+               background-image: url(/frontend/images/drag2.png)
+          .irs--flat .irs-from, 
+          .irs--flat .irs-to, 
+          .irs--flat .irs-single
+               @include fontFree($grayLight4, 10px,10px,10px,10px, $fontDescriptionMedium)
+               font-weight: auto
+          .irs--flat .irs-grid-pol
+               background-color: $grayLight3
+          .irs--flat .irs-bar
+               background: $yellow
+          .irs--flat .irs-line
+               background: $grayLight3
+     &.notIrsGridPoll
+          .irs-grid-pol
+               display: none
+     
+
+     .irs--flat .irs-line
+     .irs--flat .irs-min, 
+     .irs--flat .irs-max
+          top: 3.5rem
+     .irs--flat .irs-from, 
+     .irs--flat .irs-to, 
+     .irs--flat .irs-single
+          top: 2.75rem
+          background-color: transparent
+          @include fontFree(white, 30px,25px,20px,20px, 'Poppins')
+          font-weight: 100
+
+     .irs--flat .irs-from:before, 
+     .irs--flat .irs-to:before, 
+     .irs--flat .irs-single:before
+          display: none
+     .irs-grid-text
+          display: none
+     .irs--flat .irs-handle>i:first-child
+          background: transparent !important
+     .irs--flat .irs-handle:hover>i:first-child
+          background: transparent !important
+     .irs--flat .irs-handle
+          background-image: url(/frontend/images/drag.png)
+          background-position: center
+          background-repeat: no-repeat
+          width: 10px
+          height: 24px
+          top: 18px
+     .irs-grid-pol
+          width: 2px
+     .irs--flat .irs-grid-pol
+          background-color: $yellow
+     .irs--flat .irs-bar
+          background: $grayLight3
+          height: 8px
+     .irs--flat .irs-line
+          background: $yellow
+          height: 8px
+.boxSwitchContent
+     margin-bottom: 1rem
+     p
+          @include fontFree(white, 16px,14px,14px,14px, $fontDescriptionMedium)
+     .boxSwitch
+          @include boxSwicth()
+.boxSumilla
+     h3
+          @include fontFree(white, 18px,16px,14px,14px, $fontDescriptionMedium)
+
+.colorYellow
+     color: $yellow !important
+.bgRojo
+     background: #d01010 !important
+.bgBlanco
+     background: #fff !important
+.bgAzul
+     background: #104ad0 !important
+.bgCeleste
+     background: #1DB6F7 !important
+.bgVerde
+     background: #4ea932 !important
+.bgNegro
+     background: #000 !important
+.bgGrisOscuro
+     background: #303030 !important
+.bgGris
+     background: #5d5d5d !important
+.bgNaranja
+     background: #ffae00 !important
+.bgVerdePastel
+     background: #76be9a !important
+.bgAmarrillo
+     background: #fce91a !important
+.bgGuinda
+     background: #9a1c1c !important
+
+.lb-number
+     display: none !important
+.lb-close
+     position: fixed !important
+     top: 0 !important
+     right: 0 !important
+     float: none  !important
+     text-align: left !important
+     background: url(/frontend/images/closeGal.jpg) !important
+     width: 58px !important
+     height: 58px !important
+     background-size: cover !important
+     opacity: 1 !important
+     z-index: 500
+.lb-outerContainer
+     position: initial !important
+     background: transparent !important
+     .lb-container
+          .lb-image
+               position: fixed !important
+               top: 50% !important
+               left: 50% !important
+               transform: translate(-50%, -50%) !important
+.lb-next,
+.lb-prev
+     background-image: url(/frontend/images/nextGal.jpg) !important
+     position: fixed !important
+     top: 50% !important
+     transform: translateY(-50%) !important
+     opacity: 1 !important
+     &:hover
+          opacity: 1 !important
+.lb-prev
+     background-image: url(/frontend/images/prevGal.jpg) !important
+
+.boxContentLight
+     background: rgba($blue,.95)
+     position: fixed
+     top: -130%
+     left: 0
+     z-index: 1000
+     width: 100%
+     height: 100vh
+     transition: .5s ease-in top
+     .boxResultProduct
+          width: 100%
+          height: 250px
+          overflow-y: scroll
+          background: white
+          border-radius: 10px
+          margin-top: 1rem 
+          box-sizing: border-box
+          display: none
+          &.active
+               display: block
+          .boxContentResult
+               padding: 1.5rem 1rem 1rem 2rem
+               &.noResult
+                    padding: 2.75rem 1rem 1rem 2rem
+               h3
+                    @include fontFree(#171717, 26px,24px,24px,20px, $fontDescriptionBold)
+                    line-height: 1.25em !important
+               .boxDescription
+                    p
+                         color: #7c7c7c
+               .boxInfo
+                    ul
+                         margin: 0
+                         list-style: none
+                         padding: .5rem 0 .75rem 1rem
+                         li
+                              a
+                                   @include fontFree($grayLight5, 14px,14px,14px,14px, $fontDescriptionMedium)
+                                   
+                    .infoTitle
+                         @include fontFree(black, 14px,14px,14px,14px, $fontDescriptionBold)
+                         text-transform: uppercase
+     .boxContent
+          padding-top: 8rem
+          @media screen and (min-width: 992px)
+               padding-top: 10rem
+          @media screen and (min-width: 1200px)
+               padding-top: 10rem
+          @media screen and (min-width: 1400px)
+               padding-top: 10rem
+     &.active
+          top: 0
+     .boxSearchForm
+          border: 0px solid red
+          width: 90%
+          @media screen and (min-width: 992px)
+               width: 500px
+          .headerSearch
+               width: 100%
+               position: relative
+               .boxSVGClose
+                    position: absolute
+                    top: 50%
+                    transform: translateY(-50%)
+                    right: 1.5rem
+                    width: 1rem
+                    height: 1rem
+                    overflow: hidden
+                    border-radius: 50%
+                    background-color: #fff
+                    text-decoration: none
+                    svg
+                         width: .65rem
+                         height: .65rem
+                         color: #8f8f8f
+                         position: absolute
+                         top: 3px
+                         left: 3px
+
+     form
+          input[type='text']
+               &.inputForm1
+                    text-align: center
+     .boxClose
+          position: absolute
+          top: 2rem
+          right: 2rem
+          svg
+               width: 2rem
+               height: 2rem
+               color: white
+#msnSuscripcion
+     display: none
+     &.active
+          display: block

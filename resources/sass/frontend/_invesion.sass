@@ -1,0 +1,137 @@
+.pageSoat
+     background: $blue
+     .boxBackground
+          background-image: url('/frontend/images/pageSoat.jpg')
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: 0 0
+          .boxContent
+               padding-top: 12rem
+               @media screen and (min-width: 992px)
+                    padding-top: 15rem
+               @media screen and (min-width: 1200px)
+                    padding-top: 18rem
+               @media screen and (min-width: 1400px)
+                    padding-top: 20rem
+               .boxSoatMoto
+                    margin-top: 1.5rem
+                    p
+                         @include fontFree(#a8b1d9, 12px,12px,12px,12px, $fontDescription)
+                         line-height: 1.5em !important
+                    img
+                         width: 100px
+                         margin-top: 1rem
+               .boxDescription
+                    p
+                         &.title
+                              font-size: 16px !important
+               .boxLogosSeguros
+                    margin-top: 3rem
+                    margin-bottom: 3rem
+                    img
+                         max-width: 100%
+               .boxTitle
+                    h1
+                         color: $yellow
+                         span
+                              font-family: 'Poppins'
+                              font-weight: 300
+                              color: white
+               .boxFormSeguros
+                    width: 90%
+                    border: 1px solid rgba(white,.4)
+                    border-radius: 20px
+                    padding: 2rem 4rem
+                    @media screen and (min-width: 992px)
+                         width: 460px 
+                    .mbRow
+                         margin-bottom: 2rem
+                    .mbRow2
+                         margin-bottom: 2.5rem
+               .infoSumilla
+                    width: 90%
+                    padding-top: 1rem
+                    @media screen and (min-width: 992px)
+                         width: 460px 
+                    p
+                         @include fontFree(#6775b6, 12px,12px,12px,12px, $fontDescription)
+               .ContentAccordion
+                    width: 90%
+                    padding-top: 3rem
+                    padding-bottom: 1rem
+                    display: none
+                    @media screen and (min-width: 992px)
+                         width: 460px 
+                    &.active
+                         display: block
+                    .boxAccordion
+                         border-radius: 20px
+                         overflow: hidden
+                         margin-top: 3rem
+                         .accordion
+                              .accordion-header
+                                   padding-left: .75rem
+                                   padding-right: .75rem
+                                   padding-top: 1rem
+                                   padding-bottom: .5rem
+                                   @media screen and (min-width: 992px)
+                                        padding-left: 2rem
+                                        padding-right: 2rem
+
+                              .accordion-body
+                                   padding-left: .75rem
+                                   padding-right: .75rem
+                                   @media screen and (min-width: 992px)
+                                        padding-left: 2rem
+                                        padding-right: 2rem
+                                   .boxButtonLink
+                                        margin: 2rem 0 1rem
+                                        width: 217px
+                                        height: 70px
+                                        a
+                                             line-height: 4.65em !important
+                                             font-size: 14px !important
+                                   p
+                                        @include fontFree(#7b7b7b, 13px,13px,13px,13px, $fontDescriptionMedium)
+                                        line-height: 1.5em !important
+                                        margin-bottom: 1.25rem
+                                   .vineta
+                                        p
+                                             position: relative
+                                             padding-left: 1rem
+                                             margin-bottom: .25rem
+                                             &::after
+                                                  content: ''
+                                                  position: absolute
+                                                  top: .35rem
+                                                  left: 0
+                                                  // transform: translateY(-50%)
+                                                  width: 8px
+                                                  height: 8px
+                                                  border-radius: 50%
+                                                  background: $yellow
+
+                              .accordion-item
+                                   background-color: #e9e9e9
+                              .accordion-button
+                                   background-color: #e9e9e9
+                                   box-shadow: none
+                                   &:not(.collapsed)
+                                        padding-bottom: 1.5rem
+                                        box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%) !important
+                                   &:focus
+                                        border-color: #e9e9e9
+                                        box-shadow: none
+                                   > div
+                                        width: 90%
+                                        img
+                                             width: 50px
+                                             margin-right: .5rem
+                                             @media screen and (min-width: 992px)
+                                                  max-width: 100%
+                                                  margin-right: 0rem
+                                        p
+                                             @include fontFree(#626262, 14px,14px,14px,12px, $fontDescriptionMedium)
+
+
+                         
