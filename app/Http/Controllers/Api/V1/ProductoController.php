@@ -132,7 +132,7 @@ class ProductoController  extends Controller
     }
 
     public function catalogo(Request $request){
-        // dd($request->all());
+
         $categoria = Category::where('slug',$request->slug_categoria)->where('parent_id',0)->activos()->first();
         $response = [];
         if($categoria){
@@ -193,7 +193,7 @@ class ProductoController  extends Controller
                 });
             }
 
-
+            $array_colores_id = [];
             if(!empty($request->colores)){
                 $array_colores_id= explode(',',$request->colores);
                 $data = $data->whereHas('colores',function($query) use ($array_colores_id){
@@ -203,36 +203,63 @@ class ProductoController  extends Controller
                             $queryB->orWhere('color_id', $color_id);
                         }
                     });
-
                 });
-
-
-
             }
 
             $data=$data->get();
+
+
             // dd($data);
             if ($data && count($data) > 0) {
-                foreach ($data as $producto) {
-                    $image_default = ProductoColorImage::where('is_default',1)->with('productoColor')->whereHas('productoColor',function($query)use($producto){
-                        $query->where('producto_id',$producto->id);
-                    })->first();
 
-                    $row = new \stdClass();
-                    $row->id                    = $producto->id;
-                    $row->title                 = $producto->title_large ? trim($producto->title_large): '';
-                    $row->categoria_id          = $producto->categoria_id;
-                    $row->categoria_slug        = $producto->categoria ? $producto->categoria->slug : '';
-                    $row->categoria             = $producto->categoria ? $producto->categoria->name : '';
-                    $row->codigo                = $producto->code ? trim($producto->code): '';
-                    $row->slug                  = $producto->slug ? trim($producto->slug): '';
-                    //$row->image                 = $producto->path_image_default;
-                    $row->image         = !empty($image_default->imagen) ? asset('images/products/'.$producto->id.'/'.$image_default->productoColor->color->nombre.'/' . $image_default->imagen) : '';
-                    $row->image_cover           = !empty($producto->image_cover) ? asset('images/products/'.$producto->id.'/' . $producto->image_cover) : '';
-                    $row->link                  = 'producto/'.trim($producto->slug);
-                    $row->colores       = $this->productoColores($producto);
-                    $response[] = $row;
+                if($array_colores_id>0){
+
+                    foreach ($data as $producto) {
+
+                        $productos_color_image = ProductoColorImage::where('is_default',1)->whereHas('productoColor',function($query)use($producto,$array_colores_id){
+                                $query->where('producto_id',$producto->id);
+                                $query->whereIn('color_id',$array_colores_id);
+                            })->get();
+                        foreach ($productos_color_image as $image_default){
+                            $row = new \stdClass();
+                            $row->id                    = $producto->id;
+                            $row->title                 = $producto->title_large ? trim($producto->title_large): '';
+                            $row->categoria_id          = $producto->categoria_id;
+                            $row->categoria_slug        = $producto->categoria ? $producto->categoria->slug : '';
+                            $row->categoria             = $producto->categoria ? $producto->categoria->name : '';
+                            $row->codigo                = $producto->code ? trim($producto->code): '';
+                            $row->slug                  = $producto->slug ? trim($producto->slug): '';
+                            //$row->image                 = $producto->path_image_default;
+                            $row->image         = !empty($image_default->imagen) ? asset('images/products/'.$producto->id.'/'.$image_default->productoColor->color->nombre.'/' . $image_default->imagen) : '';
+                            $row->image_cover           = !empty($producto->image_cover) ? asset('images/products/'.$producto->id.'/' . $producto->image_cover) : '';
+                            $row->link                  = 'producto/'.trim($producto->slug);
+                            $row->colores       = $this->productoColores($producto);
+                            $response[] = $row;
+                        }
+                    }
+                }else{
+                    foreach ($data as $producto) {
+                        $image_default = ProductoColorImage::where('is_default',1)->whereHas('productoColor',function($query)use($producto){
+                            $query->where('producto_id',$producto->id);
+                        })->first();
+
+                        $row = new \stdClass();
+                        $row->id                    = $producto->id;
+                        $row->title                 = $producto->title_large ? trim($producto->title_large): '';
+                        $row->categoria_id          = $producto->categoria_id;
+                        $row->categoria_slug        = $producto->categoria ? $producto->categoria->slug : '';
+                        $row->categoria             = $producto->categoria ? $producto->categoria->name : '';
+                        $row->codigo                = $producto->code ? trim($producto->code): '';
+                        $row->slug                  = $producto->slug ? trim($producto->slug): '';
+                        //$row->image                 = $producto->path_image_default;
+                        $row->image         = !empty($image_default->imagen) ? asset('images/products/'.$producto->id.'/'.$image_default->productoColor->color->nombre.'/' . $image_default->imagen) : '';
+                        $row->image_cover           = !empty($producto->image_cover) ? asset('images/products/'.$producto->id.'/' . $producto->image_cover) : '';
+                        $row->link                  = 'producto/'.trim($producto->slug);
+                        $row->colores       = $this->productoColores($producto);
+                        $response[] = $row;
+                    }
                 }
+
             }
         }
         return $response;

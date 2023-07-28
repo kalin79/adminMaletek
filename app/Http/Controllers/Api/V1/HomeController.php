@@ -11,8 +11,12 @@ use App\Http\Enums\TypeCantidadCuerpos;
 use App\Http\Enums\TypeCantidadPuertas;
 use App\Http\Enums\TypeChapas;
 use App\Http\Enums\TypeMaterial;
+use App\Mail\SendContactanos;
+use App\Mail\SendCotizaciones;
 use App\Models\Category;
 use App\Models\Colores;
+use App\Models\Contacto;
+use App\Models\Cotizaciones;
 use App\Models\Menu;
 use App\Models\Producto;
 use App\Models\ProductoColor;
@@ -214,38 +218,46 @@ class HomeController  extends Controller
     }
 
     public function getFiltros(Request $request){
-
-        $data                               = new \stdClass();
-        if($this->getColoresFiltro()>0){
-            $data->colores                               = $this->getColoresFiltro();
+        $categoria = null;
+        $rubro = null;
+        if(isset($request->slug_categoria)){
+            $categoria = Category::where('slug',$request->slug_categoria)->where('parent_id',0)->activos()->first();
         }
 
-
-        if(count($this->getTiposByMaster(TypeChapas::master()))>0){
-            $data->tipo_cerraduras                       = $this->getTiposByMaster(TypeChapas::master());
+        if(isset($request->slug_rubro)){
+            $rubro = Rubros::where('slug',$request->rubro_slug)->activos()->first();
         }
+        $data= new \stdClass();
+        if($categoria || $rubro){
+            if($this->getColoresFiltro($categoria,$rubro)>0){
+                $data->colores                               = $this->getColoresFiltro($categoria,$rubro);
+            }
 
-        if(count($this->getTiposByMaster(TypeCantidadPuertas::master()))>0){
-            $data->tipo_cantidad_puertas                 = $this->getTiposByMaster(TypeCantidadPuertas::master());
+
+            if(count($this->getTiposByMaster(TypeChapas::master(),$categoria,$rubro))>0){
+                $data->tipo_cerraduras                       = $this->getTiposByMaster(TypeChapas::master(),$categoria,$rubro);
+            }
+
+            if(count($this->getTiposByMaster(TypeCantidadPuertas::master(),$categoria,$rubro))>0){
+                $data->tipo_cantidad_puertas                 = $this->getTiposByMaster(TypeCantidadPuertas::master(),$categoria,$rubro);
+            }
+
+            if(count($this->getTiposByMaster(TypeCantidadCuerpos::master(),$categoria,$rubro))>0){
+                $data->tipo_cantidad_cuerpos                 = $this->getTiposByMaster(TypeCantidadCuerpos::master(),$categoria,$rubro);
+            }
+
+            if(count($this->getTiposByMaster(TypeCantidadBandejas::master(),$categoria,$rubro))>0){
+                $data->tipo_cantidad_bandejas                 = $this->getTiposByMaster(TypeCantidadBandejas::master(),$categoria,$rubro);
+            }
+
+            if(count($this->getTiposByMaster(TypeCantidadCajones::master(),$categoria,$rubro))>0){
+                $data->tipo_cantidad_cajones                 = $this->getTiposByMaster(TypeCantidadCajones::master(),$categoria,$rubro);
+            }
+
+            if(count($this->getTiposByMaster(TypeMaterial::master(),$categoria,$rubro))>0){
+                $data->tipo_material                         = $this->getTiposByMaster(TypeMaterial::master(),$categoria,$rubro);
+            }
         }
-
-        if(count($this->getTiposByMaster(TypeCantidadCuerpos::master()))>0){
-            $data->tipo_cantidad_cuerpos                 = $this->getTiposByMaster(TypeCantidadCuerpos::master());
-        }
-
-        if(count($this->getTiposByMaster(TypeCantidadBandejas::master()))>0){
-            $data->tipo_cantidad_bandejas                 = $this->getTiposByMaster(TypeCantidadBandejas::master());
-        }
-
-        if(count($this->getTiposByMaster(TypeCantidadCajones::master()))>0){
-            $data->tipo_cantidad_cajones                 = $this->getTiposByMaster(TypeCantidadCajones::master());
-        }
-
-        if(count($this->getTiposByMaster(TypeMaterial::master()))>0){
-            $data->tipo_material                         = $this->getTiposByMaster(TypeMaterial::master());
-        }
-
-
 
 
 
@@ -256,21 +268,27 @@ class HomeController  extends Controller
         return $this->apiResponse($status,$code,$data);
     }
 
-    public function hasProductByTipo(){
 
-    }
-
-    public function getTiposByMaster($master){
+    public function getTiposByMaster($master,$categoria,$rubro){
         $tipos = Tipos::byMasterId($master)->get();
         $response = [];
         foreach ($tipos as $tipo) {
             $row = new \stdClass();
             $productos = Producto::where('tipo_cerradura',$tipo->id)
-                                    ->orWhere('tipo_cantidad_puertas_id',$tipo->id)
-                                    ->orWhere('tipo_cantidad_cuerpos_id',$tipo->id)
-                                    ->orWhere('tipo_cantidad_cajones_id',$tipo->id)
-                                    ->orWhere('tipo_material_id',$tipo->id)
-                                    ->orWhere('tipo_cantidad_bandejas_id',$tipo->id)->count();
+                ->orWhere('tipo_cantidad_puertas_id',$tipo->id)
+                ->orWhere('tipo_cantidad_cuerpos_id',$tipo->id)
+                ->orWhere('tipo_cantidad_cajones_id',$tipo->id)
+                ->orWhere('tipo_material_id',$tipo->id)
+                ->orWhere('tipo_cantidad_bandejas_id',$tipo->id);
+
+                if($categoria){
+                    $productos =  $productos->where('categoria_id',$categoria->id);
+                }
+
+                if($rubro){
+                    $productos =  $productos->where('rubro_id',$rubro->id);
+                }
+                 $productos = $productos->count();
             if($productos>0){
                 $row->id           = $tipo->id;
                 $row->name         = $tipo->name;
@@ -288,7 +306,7 @@ class HomeController  extends Controller
 
 
 
-    public function getColoresFiltro(){
+    public function getColoresFiltro($categoria,$rubro){
         $response = [];
         $colores = Colores::all();
 
@@ -296,7 +314,16 @@ class HomeController  extends Controller
             foreach ($colores as $color) {
                 $row = new \stdClass();
                 $producto_ids = ProductoColor::where('color_id',$color->id)->pluck('producto_id')->toArray();
-                $productos = Producto::whereIn('id',$producto_ids)->count();
+                $productos = Producto::whereIn('id',$producto_ids);
+                if($categoria){
+                    $productos =  $productos->where('categoria_id',$categoria->id);
+                }
+
+                if($rubro){
+                    $productos =  $productos->where('rubro_id',$rubro->id);
+                }
+
+                $productos =  $productos->count();
                 if($productos>0){
                     $row->id           = $color->id;
                     $row->name         = $color->nombre ? trim($color->nombre): '';
@@ -309,4 +336,83 @@ class HomeController  extends Controller
         }
         return $response;
     }
+
+
+    public function storeCotizacion(Request $request)
+    {
+        DB::beginTransaction();
+        try{
+
+            $cotizaciones=Cotizaciones::create($request->all());
+
+            $data['producto']=Producto::find($cotizaciones->producto_id)->titulo_large;
+            $data['cantidad']=$cotizaciones->cantidad;
+            $data['nombres_apellidos']=$cotizaciones->nombres_apellidos;
+            $data['numero_documento']=$cotizaciones->numero_documento;
+            $data['email']=$cotizaciones->email;
+            $data['celular']=$cotizaciones->celular;
+            $data['comentario']=$cotizaciones->comentario;
+
+            //Financiamiento::create($request->all());
+
+            $email = ["seguroscamilacorp@gmail.com","hola@motopopular.com",'c.augusto.espinoza@gmail.com'];
+            //$email="pedromollehuanca@gmail.com";
+
+            Mail::to($email)->send(new SendCotizaciones($data));
+            DB::commit();
+        } catch(Exception $exc){
+            DB::rollBack();
+            $status = 0;
+            $code   = 500;
+            $data   = $exc;
+            return $this->apiResponse($status,$code,$data);
+        }
+
+        $row                = new \stdClass();
+        $row->msg           = 'Cotización realizada correctamente';
+
+        $status = 1;
+        $code   = 201;
+        $data   = $row;
+
+        return $this->apiResponse($status,$code,$data);
+    }
+
+    public function storeContacto(Request $request)
+    {
+        DB::beginTransaction();
+        try{
+            $contacto=Contacto::create($request->all());
+
+            $data['nombres_apellidos']=$contacto->nombres_apellidos;
+            $data['numero_documento']=$contacto->numero_documento;
+            $data['email']=$contacto->email;
+            $data['celular']=$contacto->celular;
+            $data['comentario']=$contacto->comentario;
+
+            //Financiamiento::create($request->all());
+            //    dd($data);
+            $email = ["seguroscamilacorp@gmail.com","hola@motopopular.com",'c.augusto.espinoza@gmail.com'];
+            //$email="pedromollehuanca@gmail.com";
+
+            Mail::to($email)->send(new SendContactanos($data));
+            DB::commit();
+        } catch(Exception $exc){
+            DB::rollBack();
+            $status = 0;
+            $code   = 500;
+            $data   = $exc;
+            return $this->apiResponse($status,$code,$data);
+        }
+
+        $row                = new \stdClass();
+        $row->msg           = 'Contacto realizada correctamente';
+
+        $status = 1;
+        $code   = 201;
+        $data   = $row;
+
+        return $this->apiResponse($status,$code,$data);
+    }
+
 }
