@@ -69,7 +69,7 @@ jQuery(function() {
     }
 
     ModalCRUD.create({
-        title: 'Blogs',
+        title: 'Articulo',
         element: '.entity-create',
         mode: 'lg',
         form_element: '#form-blog-create',
@@ -83,11 +83,12 @@ jQuery(function() {
             load_functions();
         },
         afterSuccess: function() {
+            tinymce.remove();
             load();
         }
     });
     ModalCRUD.edit({
-        title: 'Banners',
+        title: 'Articulo',
         element: '.edit-entity',
         element_is_load: true,
         form_element: '#form-banners-edit',
@@ -100,6 +101,7 @@ jQuery(function() {
             load_functions();
         },
         afterSuccess: function() {
+            tinymce.remove();
             load();
         }
     });
@@ -288,7 +290,36 @@ var init_functions = function() {
 }
 
 var load_functions = function() {
-    $('#avatar').on('change', function() {
+
+    $.fn.datepicker.languages['es-ES'] = {
+        format: 'yyyy-mm-dd',
+        days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        daysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        daysMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+        weekStart: 1,
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+    };
+
+    $('#fecha').datepicker({
+        startDate: null,
+        language: 'es-ES',
+        autoHide: true,
+        zIndex: 2048,
+    });
+    $('#image_poster').on('change', function() {
+        const file = this.files[0];
+        $("#file-poster-poster").text(file['name']);
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                $('#img-upload-poster').attr('src', event.target.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    $('#imagen').on('change', function() {
         const file = this.files[0];
         $("#file-desktop").text(file['name']);
         if (file) {
@@ -299,7 +330,6 @@ var load_functions = function() {
             reader.readAsDataURL(file);
         }
     });
-
     $('#image_mobile').on('change', function() {
         const file = this.files[0];
         $("#file-mobile").text(file['name']);
@@ -309,6 +339,22 @@ var load_functions = function() {
                 $('#img-upload-mobile').attr('src', event.target.result);
             }
             reader.readAsDataURL(file);
+        }
+    });
+    tinymce.remove();
+    tinymce.init({
+        selector: '.tinymce',
+        height: 100,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste code textcolor'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor',
+        setup: function(editor) {
+            editor.on('change', function() {
+                tinymce.triggerSave();
+            });
         }
     });
 }

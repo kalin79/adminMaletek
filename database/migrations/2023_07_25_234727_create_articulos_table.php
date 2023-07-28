@@ -15,15 +15,16 @@ class CreateArticulosTable extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->id();
-            $table->integer('blog_id');
             $table->string('slug');
             $table->string('titulo');
             $table->string('sub_titulo')->nullable();
             $table->date("fecha")->nullable();
             $table->string('etiqueta')->nullable();
+            $table->text('descripcion_corta')->nullable();
             $table->text('contenido')->nullable();
             $table->string('imagen_banner')->nullable();
             $table->string('imagen_banner_mobile')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
 

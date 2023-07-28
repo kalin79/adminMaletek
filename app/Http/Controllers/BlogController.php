@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articulos;
 use App\Models\Blogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,9 @@ class BlogController extends Controller
 
         if(!$request->ajax()) return redirect('/');
         //dd($request->parent_id);
-        $blogs = Blogs::withCount(['articulos'])->orderBy('id', 'asc')
+        $articulos = Articulos::orderBy('id', 'asc')
             ->paginate("20");
-        return view('pages.blogs.partials.load',compact('blogs'));
+        return view('pages.blogs.partials.load',compact('articulos'));
     }
 
 
@@ -44,12 +45,13 @@ class BlogController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($data['titulo']);
-        $category = Blogs::create($data);
-        $category->updateImages($request->file('images'));
-        $category->updateImageMobile($request->file('image_mobile'));
-        $category->save();
+        $articulo = Articulos::create($data);
+        $articulo->updateImages($request->file('imagen_banner'));
+        $articulo->updateImageMobile($request->file('image_mobile'));
+        $articulo->updateImagePortada($request->file('imagen_banner_mobile'));
+        $articulo->save();
 
-        return response()->json($category,201);
+        return response()->json($articulo,201);
     }
     public function edit(Request $request, Category $category){
 
@@ -62,22 +64,22 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Category $category)
+    public function update(Request $request,Articulos $articulo)
     {
         if(!$request->ajax()) return redirect('/');
         DB::beginTransaction();
         try {
             $data = $request->all();
             $data['slug'] = Str::slug($data['name']);
-            $category->update($data);
-            $category->updateImages($request->file('images'));
-            $category->updateImageMobile($request->file('image_mobile'));
+            $articulo->update($data);
+            $articulo->updateImages($request->file('images'));
+            $articulo->updateImageMobile($request->file('image_mobile'));
             DB::commit();
         } catch (Exception $exc) {
             DB::rollBack();
             abort(500);
         }
-        return response()->json($category,202);
+        return response()->json($articulo,202);
 
 
     }
@@ -90,9 +92,9 @@ class BlogController extends Controller
     public function desactive(Request $request)
     {
         if(!$request->ajax()) return redirect('/');
-        $category = Blogs::findOrFail($request->id);
-        $category->active = 0;
-        if($category->save()){
+        $articulo = Articulos::findOrFail($request->id);
+        $articulo->active = 0;
+        if($articulo->save()){
             return response()->json(["rpt"=>1]);
         }
     }
@@ -100,20 +102,20 @@ class BlogController extends Controller
     public function active(Request $request)
     {
         if(!$request->ajax()) return redirect('/');
-        $category = Blogs::findOrFail($request->id);
-        $category->active = 1;
-        if($category->save()){
+        $articulo = Articulos::findOrFail($request->id);
+        $articulo->active = 1;
+        if($articulo->save()){
             return response()->json(["rpt"=>1]);
         }
     }
 
-    public function destroy(Request $request, Blogs $blog){
+    public function destroy(Request $request, Articulos $articulo){
         if(!$request->ajax()) return redirect('/');
 
         DB::beginTransaction();
         try {
 
-            $blog->delete();
+            $articulo->delete();
 
             DB::commit();
         } catch (Exception $exc) {

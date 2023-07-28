@@ -8,14 +8,14 @@
                         <span class="d-inline-block pr-2">
                             <i class="fa fa-image opacity-6"></i>
                         </span>
-                        <span class="d-inline-block">Categorias</span>
+                        <span class="d-inline-block">Articulos</span>
                     </div>
                     <div class="page-title-subheading opacity-10">
                         <nav class="" aria-label="breadcrumb">
                             <ol class="breadcrumb">
 
                                 <li class="breadcrumb-item">
-                                    <a href="{{route('blogs.index')}}">Categorias</a>
+                                    <a href="{{route('blogs.index')}}">Articulos</a>
                                 </li>
 
                                 <li class="active breadcrumb-item" aria-current="page">
@@ -50,7 +50,9 @@
                                     <tr>
 
                                         <th width="200px">Poster</th>
-                                        <th>Nombre</th>
+                                        <th>Articulo</th>
+                                        <th>Descripción Corta</th>
+                                        <th>Fecha Publicación</th>
                                         <th>Estado</th>
                                         <th>Opciones</th>
                                     </tr>
@@ -77,6 +79,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <!-- Bootbox modal + functions(modal, alerts Customized) -->
+
+
+    <script src="{{ asset( 'js/datepicker/moment.min.js' ) }}"></script>
+    <script src="{{ asset( 'js/datepicker/datepicker.js' ) }}"></script>
+    <script src="{{ asset( 'js/datepicker/daterangepicker.js' ) }}"></script>
+
+    <script src="/template-mintos/vendors/tinymce/tinymce.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/bootbox.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/functions.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/filter.js') }}"></script>

@@ -4,19 +4,20 @@
         <tr>
 
             <th width="200px">Poster</th>
-            <th>Blog</th>
-            <th>Artitulos</th>
-            <th >Estado</th>
+            <th>Articulo</th>
+            <th>Descripción Corta</th>
+            <th>Fecha Publicación</th>
+            <th>Estado</th>
             <th width="150px">Opciones</th>
         </tr>
     </thead>
 <tbody>
-    @forelse ($blogs as $blog)
+    @forelse ($articulos as $blog)
         <tr>
 
                 <td>
-                    @if($blog->imagen_banner )
-                    <img src="/images/blogs/{{$blog->id}}/{{ $blog->imagen_banner }}" alt="item.name"
+                    @if($blog->imagen_portada )
+                    <img src="/images/articulos/{{$blog->id}}/{{ $blog->imagen_portada }}"
                         width="80px">
                     @endif
                 </td>
@@ -26,12 +27,11 @@
 
             </td>
             <td>
-                <a title="articulos" href="{{ route('blog.articulo.index', $blog->id) }}"
-                   class="btn btn-outline-primary btn-sm">
-                    {{ $blog->articulos_count }}
-                </a>
+                {{ $blog->descripcion_corta }}
             </td>
-
+            <td>
+                {{ $blog->fecha }}
+            </td>
             @if ($blog->active)
                 <td><span class="badge badge-success">Activo</span></td>
             @else
@@ -70,8 +70,8 @@
 </tbody>
 <tfoot>
     <tr>
-        <td colspan="4">{{ $blogs->links() }}</td>
-        <td><span>Total: </span> <b>{{ $blogs->total() }}</b></td>
+        <td colspan="4">{{ $articulos->links() }}</td>
+        <td><span>Total: </span> <b>{{ $articulos->total() }}</b></td>
     </tr>
 </tfoot>
 </table>

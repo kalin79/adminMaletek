@@ -11,6 +11,7 @@ use App\Models\Marcas;
 use App\Models\Producto;
 use App\Models\ProductoColorImage;
 use App\Models\ProductoLike;
+use App\Models\Rubros;
 use App\Traits\ApiResponser;
 
 use Illuminate\Http\Request;
@@ -133,12 +134,26 @@ class ProductoController  extends Controller
 
     public function catalogo(Request $request){
 
-        $categoria = Category::where('slug',$request->slug_categoria)->where('parent_id',0)->activos()->first();
+        $categoria = null;
+        $rubro = null;
+        if(isset($request->slug_categoria)){
+            $categoria = Category::where('slug',$request->slug_categoria)->where('parent_id',0)->activos()->first();
+        }
+
+        if(isset($request->slug_rubro)){
+            $rubro = Rubros::where('slug',$request->rubro_slug)->activos()->first();
+        }
         $response = [];
-        if($categoria){
+        if($categoria || $rubro){
 
             $data = Producto::where('categoria_id',$categoria->id)->activos();
+            if($categoria){
+                $data =  $data->where('categoria_id',$categoria->id);
+            }
 
+            if($rubro){
+                $data =  $data->where('rubro_id',$rubro->id);
+            }
             if(!empty($request->tipoCerradura)){
                 $array_tipo_cerradura_id= explode(',',$request->tipoCerradura);
                 $data = $data->where(function($query) use ($array_tipo_cerradura_id){
@@ -324,14 +339,33 @@ class ProductoController  extends Controller
     public function searchProduct(Request $request)
     {
         if ($request->valor) {
-            $categoria = Category::where('slug',$request->slug_categoria)->where('parent_id',0)->activos()->first();
-            if($categoria){
+            $categoria = null;
+            $rubro = null;
+            if(isset($request->slug_categoria)){
+                $categoria = Category::where('slug',$request->slug_categoria)->where('parent_id',0)->activos()->first();
+            }
+
+            if(isset($request->slug_rubro)){
+                $rubro = Rubros::where('slug',$request->rubro_slug)->activos()->first();
+            }
+            $response = [];
+            if($categoria || $rubro){
+
+
+
                 $products = Producto::where('categoria_id',$categoria->id)->where('title_large', 'like', '%' . $request->valor . '%')
                     ->orWhere('code', 'like', '%' . $request->valor . '%')
                     ->orWhere('slug', 'like', '%' . $request->valor . '%')
                     ->orWhere('description', 'like', '%' . $request->valor . '%')
-                    ->activos()
-                    ->paginate(8);
+                    ->activos();
+                if($categoria){
+                    $products =  $products->where('categoria_id',$categoria->id);
+                }
+
+                if($rubro){
+                    $products =  $products->where('rubro_id',$rubro->id);
+                }
+                $products=$products->paginate(8);
                 $data = [];
                 foreach ($products as $product) {
                     $data[] = $this->producto($product, false);

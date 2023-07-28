@@ -20,6 +20,7 @@ use App\Models\Cotizaciones;
 use App\Models\Menu;
 use App\Models\Producto;
 use App\Models\ProductoColor;
+use App\Models\Rubros;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Subscription;

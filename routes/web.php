@@ -161,17 +161,17 @@ Route::group(['prefix' => 'admin'], function () {
 
 
         /******************************Blogs******************* */
-        Route::get('blogs', "BlogController@index")->name('blogs.index');
-        Route::get('blogs/load', 'BlogController@load')->name('blogs.load');
-        Route::get('blogs/create', "BlogController@create")->name('blogs.create');
-        Route::post('blogs/store', "BlogController@store")->name('blogs.store');
-        Route::get('blogs/edit/{product}', "BlogController@edit")->name('blogs.edit');
-        Route::post('blogs/update/{product}', 'BlogController@update')->name('blogs.update');
-        Route::post('blogs/delete/{producto}', "BlogController@destroy")->name('blogs.delete');
-        Route::post('blogs/desactive', "BlogController@desactive")->name('blogs.desactive');
-        Route::post('blogs/active', "BlogController@active")->name('blogs.active');
+        Route::get('articulo', "BlogController@index")->name('blogs.index');
+        Route::get('articulo/load', 'BlogController@load')->name('blogs.load');
+        Route::get('articulo/create', "BlogController@create")->name('blogs.create');
+        Route::post('articulo/store', "BlogController@store")->name('blogs.store');
+        Route::get('articulo/edit/{articulo}', "BlogController@edit")->name('blogs.edit');
+        Route::post('articulo/update/{articulo}', 'BlogController@update')->name('blogs.update');
+        Route::post('articulo/delete/{articulo}', "BlogController@destroy")->name('blogs.delete');
+        Route::post('articulo/desactive', "BlogController@desactive")->name('blogs.desactive');
+        Route::post('articulo/active', "BlogController@active")->name('blogs.active');
 
-        /******************************Blog Articulo******************* */
+        /******************************Blog Articulo*******************
         Route::get('blog/{blog}/articulo', "ArticuloController@index")->name('blog.articulo.index');
         Route::get('blog/{blog}/articulo/load', "ArticuloController@load")->name('blog.articulo.load');
         Route::get('blog/{blog}/articulo/create', "ArticuloController@create")->name('blog.articulo.create');
@@ -181,7 +181,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('blog/articulo/active', "ArticuloController@active")->name('blog.articulo.active');
         Route::post('blog/articulo/desactive', "ArticuloController@desactive")->name('blog.articulo.desactive');
-        Route::post('blog/articulo/destroy/{articulo}', "ArticuloController@destroy")->name('blog.articulo.destroy');
+        Route::post('blog/articulo/destroy/{articulo}', "ArticuloController@destroy")->name('blog.articulo.destroy');*/
 
 
     });
