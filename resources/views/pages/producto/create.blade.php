@@ -87,7 +87,7 @@
                                                 <div class="form-group overflow-auto vh-75 ">
                                                     <label for="cmb_rubros"><b>Rubro</b></label>
                                                     <label class="field select">
-                                                        <select id="cmb_rubros" name="rubro_id" class=" form-control " placeholder="Seleccione marca" style="width: 100% !important">
+                                                        <select id="cmb_rubros" name="rubros_id[]" multiple="" class=" form-control " placeholder="Seleccione marca" style="width: 100% !important">
                                                             <option></option>
                                                             @foreach ($rubros as $rubro)
                                                                 <option value="{{$rubro->id}}">{{$rubro->nombre}}</option>

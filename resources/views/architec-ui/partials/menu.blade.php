@@ -37,8 +37,22 @@
                 <span>Banners</span>
             </a>
         </li>
+    </ul>
+</li>
+<li >
+    <a href="#">
+        <i class="metismenu-icon pe-7s-config"></i>
+        Blog
+        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+    </a>
+    <ul>
 
-
+        <li >
+            <a href="{{route('blogs.index')}}">
+                <i class="metismenu-icon pe-7s-display2"></i>
+                <span>Articulo</span>
+            </a>
+        </li>
     </ul>
 </li>
 

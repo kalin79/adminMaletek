@@ -31,27 +31,12 @@ Route::group(['middleware' => ['guest']], function(){
         Route::post('catalogo', 'Api\V1\ProductoController@catalogo')->name('api.catalogo');
 
         Route::get('get-filters', 'Api\V1\HomeController@getFiltros')->name('api.get-filters');
-
-        Route::get('financiamiento-data', 'Api\V1\HomeController@finaciamientoData')->name('api.financiamiento-data');
-
-        Route::get('quiero-la-moto-data', 'Api\V1\HomeController@quieroLaMotoData')->name('api.quiero-la-moto-data');
-
-        Route::post('store-finaciamiento', 'Api\V1\HomeController@storeFinanciamiento')->name('api.store-finaciamiento');
-        Route::post('store-quiero-la-moto', 'Api\V1\HomeController@quieroLaMoto')->name('api.store-quiero-la-moto');
-
-        Route::get('get-provincias', 'Api\V1\HomeController@getProvincia')->name('api.get-provincias');
-        Route::get('get-distritos', 'Api\V1\HomeController@getDistrito')->name('api.get-distritos');
-        Route::get('get-motos', 'Api\V1\HomeController@productosByMarca')->name('api.get-motos');
-        Route::get('get-colores-by-moto', 'Api\V1\HomeController@productoColores')->name('api.get-colores-by-moto');
-
-        Route::get('search-marca', 'Api\V1\HomeController@getMarcasFiltroSearch')->name('api.searchMarca');
-        Route::get('search-tipo-moto', 'Api\V1\HomeController@getTipoMotosSearch')->name('api.searchTipoMoto');
+      Route::post('store-cotizacion', 'Api\V1\HomeController@storeCotizacion')->name('api.store-cotizacion');
+        Route::post('store-contactanos', 'Api\V1\HomeController@storeContacto')->name('api.store-contactanos');
 
 
-        Route::post('producto-like', 'Api\V1\ProductoController@productoLike')->name('api.producto-like');
-
-        Route::get('pre-suscripcion-data', 'Api\V1\HomeController@preSuscripcionData')->name('api.pre-suscripcion-data');
-        Route::post('store-pre-suscripcion', 'Api\V1\HomeController@preSuscricion')->name('api.store-pre-suscripcion');
+        Route::get('articulos', 'Api\V1\HomeController@articulos')->name('api.articulos');
+        Route::get('articulo/{slug_articulo}', 'Api\V1\HomeController@detalleArticulo')->name('api.detalle-articulo');
 
     });
 });
