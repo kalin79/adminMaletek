@@ -17,6 +17,7 @@ use App\Models\Marcas;
 use App\Models\ProductImage;
 use App\Models\Producto;
 use App\Models\ProductoColor;
+use App\Models\ProductoRubro;
 use App\Models\ProductoTipos;
 use App\Models\Rubros;
 use App\Models\Tipos;
@@ -84,10 +85,10 @@ class ProductoController extends Controller
             ProductoColor::create(['producto_id'=>$product->id,'color_id'=>$value]);
         }
 
-        /*$tipo_motos_ids = $request->tipo_motos_id?? [];
-        foreach ($tipo_motos_ids as $key => $tipo_id) {
-            ProductoTipos::create(['producto_id'=>$product->id,'tipo_moto_id'=>$tipo_id]);
-        }*/
+        $rubro_ids = $request->rubros_id ?? [];
+        foreach ($rubro_ids as $key => $rubro_id) {
+            ProductoRubro::create(['producto_id'=>$product->id,'rubro_id'=>$rubro_id]);
+        }
         $product->updateFichaTecnica($request->file('ficha_pdf'));
         $product->updateImageCover($request->file('imagen_cover'));
         $post_route = route('producto.index');
@@ -106,8 +107,10 @@ class ProductoController extends Controller
         $colores = Colores::all();
         $rubros = Rubros::activos()->get();
         $colores_producto =$product->colores()->get()->pluck('color_id')->toArray();
+        $rubros_producto =$product->rubros()->get()->pluck('rubro_id')->toArray();
+        //dd($rubros_producto);
         $categorias = Category::activos()->get();
-        return view('pages.producto.edit', compact('tipos_cantidad_puertas','tipos_cantidad_cuerpos','tipos_cantidad_cajones','tipos_material','tipos_cantidad_bandejas', 'colores', 'product','colores_producto','categorias','rubros','tipos_cerradura'));
+        return view('pages.producto.edit', compact('rubros_producto','tipos_cantidad_puertas','tipos_cantidad_cuerpos','tipos_cantidad_cajones','tipos_material','tipos_cantidad_bandejas', 'colores', 'product','colores_producto','categorias','rubros','tipos_cerradura'));
     }
     /**
      * Update the specified resource in storage.
@@ -122,7 +125,6 @@ class ProductoController extends Controller
         /*DB::beginTransaction();
         try {*/
             $data = $request->all();
-            //dd($data);
             $slug = Str::slug($data['title_large']);
             if (Producto::where('slug', $slug)->where("id", "!=", $product->id)->withTrashed()->count() > 0) {
                 $slug = Str::slug($data['title_large'] . "-" . rand(99, 9999));
@@ -159,24 +161,26 @@ class ProductoController extends Controller
                 }
             }
 
-            if($request->tipo_motos_id){
+            if($request->rubros_id){
                 /****************Eliminando areas ***********/
-                $producto_tipos = $product->tiposMoto;
-                $tipos_motos = Tipos::whereIn("id",$request->tipo_motos_id)->get()->pluck('id')->toArray();
-                $producto_tipos_data = ProductoTipos::where("producto_id",$product->id)->whereIn('tipo_moto_id',$tipos_motos)->get()->pluck('producto_id','id')->toArray();
-                $array_tproducto_tipos_data_id = $producto_tipos ? $producto_tipos->pluck('id')->toArray() : [];
-                $array_tipos_data_id= count($producto_tipos_data) ? array_keys($producto_tipos_data):[];
-                $producto_tipos_id_delete = array_diff($array_tproducto_tipos_data_id,$array_tipos_data_id);
-                if(count($producto_tipos_id_delete)){
-                    $product->tiposMoto()->where("producto_id",$product->id)->whereIn('id',$producto_tipos_id_delete)->delete();
-                }
-                foreach($request->tipo_motos_id as $color_id){
+                $producto_rubros = $product->rubros;
 
-                    $producto_tipos_motos = ProductoTipos::where('producto_id',$product->id)->where('tipo_moto_id',$color_id)->first();
+                $rubros = Rubros::whereIn("id",$request->rubros_id)->get()->pluck('id')->toArray();
+
+                $producto_tipos_data = ProductoRubro::where("producto_id",$product->id)->whereIn('rubro_id',$rubros)->get()->pluck('producto_id','id')->toArray();
+                $array_producto_rubros_data_id = $producto_rubros ? $producto_rubros->pluck('id')->toArray() : [];
+                $array_tipos_data_id= count($producto_tipos_data) ? array_keys($producto_tipos_data):[];
+                $producto_tipos_id_delete = array_diff($array_producto_rubros_data_id,$array_tipos_data_id);
+                if(count($producto_tipos_id_delete)){
+                    $product->rubros()->where("producto_id",$product->id)->whereIn('id',$producto_tipos_id_delete)->delete();
+                }
+                foreach($request->rubros_id as $rubro_id){
+
+                    $producto_tipos_motos = ProductoRubro::where('producto_id',$product->id)->where('rubro_id',$rubro_id)->first();
                     if(!$producto_tipos_motos){
-                        ProductoTipos::create([
+                        ProductoRubro::create([
                             'producto_id'=> $product->id,
-                            'tipo_moto_id'=>$color_id
+                            'rubro_id'=>$rubro_id
                         ]);
                     }
 

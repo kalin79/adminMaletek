@@ -13,6 +13,7 @@ use App\Http\Enums\TypeChapas;
 use App\Http\Enums\TypeMaterial;
 use App\Mail\SendContactanos;
 use App\Mail\SendCotizaciones;
+use App\Models\Articulos;
 use App\Models\Category;
 use App\Models\Colores;
 use App\Models\Contacto;
@@ -414,6 +415,59 @@ class HomeController  extends Controller
         $data   = $row;
 
         return $this->apiResponse($status,$code,$data);
+    }
+
+    public function articulos(){
+        $response_products = [];
+        $products = [];
+        $products = Articulos::activos()
+            ->orderBy('id','DESC')
+            ->limit(10)
+            ->get();
+
+        if(count($products)>0){
+            foreach ($products as $product) {
+                //dd(date("n",strtotime($product->fecha)));
+                $row                        = new \stdClass();
+                $row->id                    = $product->id;
+                $row->title                 = $product->titulo ? trim($product->titulo): '';
+                $row->hashtag               = $product->etiqueta;
+                $row->fecha                 = date("d",strtotime($product->fecha))." ". mesCastellanoAbreviado(date("n",strtotime($product->fecha)))." ".date("Y",strtotime($product->fecha));
+                $row->sub_titulo          = $product->sub_titulo;
+                $row->descripcion_corta        = $product->descripcion_corta ? $product->descripcion_corta: '';
+                $row->slug                  = $product->slug ? trim($product->slug): '';
+                $row->image                 = $product->imagen_portada ? asset('images/articulos/' .$product->id.'/'.$product->imagen_portada) : '';
+                 $row->link                  = 'articulo/'.$product->slug;
+                $response_products[]= $row;
+            }
+        }
+
+
+        return $response_products;
+    }
+
+    public function detalleArticulo(Request $request){
+
+        $articulo = Articulos::where('slug',$request->slug_articulo)
+            ->first();
+        $row                        = new \stdClass();
+        if($articulo){
+
+
+                $row->id                    = $articulo->id;
+                $row->titulo                 = $articulo->titulo ? trim($articulo->titulo): '';
+                $row->sub_titulo          = $articulo->sub_titulo;
+                $row->fecha                 = date("d",strtotime($articulo->fecha))." ". mesCastellanoAbreviado(date("n",strtotime($articulo->fecha)))." ".date("Y",strtotime($articulo->fecha));
+
+                $row->descripcion          = $articulo->contenido ? $articulo->contenido: '';
+                $row->slug                  = $articulo->slug ? trim($articulo->slug): '';
+                $row->imagen_banner                 = $articulo->imagen_banner ? asset('images/articulos/' .$articulo->id.'/'.$articulo->imagen_banner) : '';
+                $row->imagen_banner_mobile                 = $articulo->imagen_banner_mobile ? asset('images/articulos/' .$articulo->id.'/'.$articulo->imagen_banner_mobile) : '';
+
+        }
+
+
+        return $row;
     }
 
 }

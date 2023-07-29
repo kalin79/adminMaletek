@@ -237,8 +237,8 @@ class Producto extends Model
         return $this->hasMany(RelationProduct::class, 'product_id');
     }
 
-    public function rubro(){
-        return $this->hasOne(Rubros::class,'id','rubro_id');
+    public function rubros(){
+        return $this->hasMany(ProductoRubro::class,'producto_id');
     }
 
 

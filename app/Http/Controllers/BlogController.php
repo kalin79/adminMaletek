@@ -47,8 +47,8 @@ class BlogController extends Controller
         $data['slug'] = Str::slug($data['titulo']);
         $articulo = Articulos::create($data);
         $articulo->updateImages($request->file('imagen_banner'));
-        $articulo->updateImageMobile($request->file('image_mobile'));
-        $articulo->updateImagePortada($request->file('imagen_banner_mobile'));
+        $articulo->updateImageMobile($request->file('imagen_banner_mobile'));
+        $articulo->updateImagePortada($request->file('imagen_portada'));
         $articulo->save();
 
         return response()->json($articulo,201);

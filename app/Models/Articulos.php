@@ -142,7 +142,7 @@ class Articulos extends Model
             }
             $file = $images;
             //$imagename = time() . "-sl." . $file->getClientOriginalExtension();
-            $imagename = $this->id . "-mb-" . time() . '.' . $images->getClientOriginalExtension();
+            $imagename = $this->id . "-principal-" . time() . '.' . $images->getClientOriginalExtension();
             $file->move($destinationPath, $imagename);
             $this->update(['imagen_portada'=>$imagename]);
         }
