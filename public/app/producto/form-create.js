@@ -68,6 +68,7 @@ jQuery(function() {
     $("#cmb_rubros").select2({
         theme: "bootstrap4",
         placeholder: "Seleccione rubros",
+        multiple: true
     })
 
     $("#cmb_cantidad_cajones").select2({
