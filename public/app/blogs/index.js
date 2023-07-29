@@ -91,8 +91,9 @@ jQuery(function() {
         title: 'Articulo',
         element: '.edit-entity',
         element_is_load: true,
-        form_element: '#form-banners-edit',
+        form_element: '#form-blog-edit',
         isLoadFromAjax: true,
+        mode: 'lg',
         rules: rules,
         url: function(element) {
             return $(element).attr("href");

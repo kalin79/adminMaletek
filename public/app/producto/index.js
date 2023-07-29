@@ -7,13 +7,13 @@ jQuery(function() {
     });
     load();
     var data_fields = [
-        { "id": 1, "text": "Título", type: 'text', field: 'titulo' },
-        { "id": 2, "text": "Marca", type: 'list', field: 'marca_id', list: function() { return list_marcas() }, 'type_select2': true },
-        { "id": 3, "text": "Precio", type: 'number', field: 'precio' },
+        { "id": 1, "text": "Título", type: 'text', field: 'title_large' },
+       // { "id": 2, "text": "categoria", type: 'list', field: 'categoria_id', list: function() { return list_categorias() }, 'type_select2': true },
+        { "id": 2, "text": "Código", type: 'text', field: 'code' },
     ];
 
-    function list_marcas() {
-        return get_list(url_filter_marcas_load);
+    function list_categorias() {
+        return get_list(url_filter_cagegorias_load);
     }
     $("#cmb-field").select2({
         theme: "bootstrap4",

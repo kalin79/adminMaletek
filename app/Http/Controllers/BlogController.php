@@ -53,9 +53,9 @@ class BlogController extends Controller
 
         return response()->json($articulo,201);
     }
-    public function edit(Request $request, Category $category){
+    public function edit(Request $request, Articulos $articulo){
 
-        return view('pages.blogs.modals.edit',compact('category'));
+        return view('pages.blogs.modals.edit',compact('articulo'));
     }
     /**
      * Update the specified resource in storage.
@@ -70,10 +70,11 @@ class BlogController extends Controller
         DB::beginTransaction();
         try {
             $data = $request->all();
-            $data['slug'] = Str::slug($data['name']);
+            $data['slug'] = Str::slug($data['titulo']);
             $articulo->update($data);
-            $articulo->updateImages($request->file('images'));
-            $articulo->updateImageMobile($request->file('image_mobile'));
+            $articulo->updateImages($request->file('imagen_banner'));
+            $articulo->updateImageMobile($request->file('imagen_banner_mobile'));
+            $articulo->updateImagePortada($request->file('imagen_portada'));
             DB::commit();
         } catch (Exception $exc) {
             DB::rollBack();
