@@ -279,11 +279,11 @@ class HomeController  extends Controller
 
            // dd($categoria,$rubro);
             if($categoria){
-                $productos =  Producto::where('categoria_id',$categoria->id);
+                $productos =  Producto::activos()->where('categoria_id',$categoria->id);
             }
 
             if($rubro){
-                $productos =  Producto::where('rubro_id',$rubro->id);
+                $productos =  Producto::activos()->where('rubro_id',$rubro->id);
             }
             $productos =  $productos->Where($columna,$tipo->id);
             /*if($master==1){
