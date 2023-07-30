@@ -142,7 +142,7 @@ class ProductoController  extends Controller
         }
 
         if(isset($request->slug_rubro)){
-            $rubro = Rubros::where('slug',$request->rubro_slug)->activos()->first();
+            $rubro = Rubros::where('slug',$request->slug_rubro)->activos()->first();
         }
 
         $response = [];
@@ -229,7 +229,7 @@ class ProductoController  extends Controller
 
             $data=$data->get();
 
-             
+
             if ($data && count($data) > 0) {
 
                 if(count($array_colores_id)>0){
