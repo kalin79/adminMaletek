@@ -39,6 +39,7 @@ class ProductoController  extends Controller
 
     public function producto(Producto $producto,$all_data=true)
     {
+        // dd(1);
 
         $row                = new \stdClass();
         $row->id                    = $producto->id;
