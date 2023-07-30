@@ -236,28 +236,28 @@ class HomeController  extends Controller
             }
 
 
-            if(count($this->getTiposByMaster(TypeChapas::master(),$categoria,$rubro))>0){
-                $data->tipo_cerraduras                       = $this->getTiposByMaster(TypeChapas::master(),$categoria,$rubro);
+            if(count($this->getTiposByMaster(TypeChapas::master(),'tipo_cerradura',$categoria,$rubro))>0){
+                $data->tipo_cerraduras                       = $this->getTiposByMaster(TypeChapas::master(),'tipo_cerradura',$categoria,$rubro);
             }
 
-            if(count($this->getTiposByMaster(TypeCantidadPuertas::master(),$categoria,$rubro))>0){
-                $data->tipo_cantidad_puertas                 = $this->getTiposByMaster(TypeCantidadPuertas::master(),$categoria,$rubro);
+            if(count($this->getTiposByMaster(TypeCantidadPuertas::master(),'tipo_cantidad_puertas_id',$categoria,$rubro))>0){
+                $data->tipo_cantidad_puertas                 = $this->getTiposByMaster(TypeCantidadPuertas::master(),'tipo_cantidad_puertas_id',$categoria,$rubro);
             }
 
-            if(count($this->getTiposByMaster(TypeCantidadCuerpos::master(),$categoria,$rubro))>0){
-                $data->tipo_cantidad_cuerpos                 = $this->getTiposByMaster(TypeCantidadCuerpos::master(),$categoria,$rubro);
+            if(count($this->getTiposByMaster(TypeCantidadCuerpos::master(),'tipo_cantidad_cuerpos_id',$categoria,$rubro))>0){
+                $data->tipo_cantidad_cuerpos                 = $this->getTiposByMaster(TypeCantidadCuerpos::master(),'tipo_cantidad_cuerpos_id',$categoria,$rubro);
             }
 
-            if(count($this->getTiposByMaster(TypeCantidadBandejas::master(),$categoria,$rubro))>0){
-                $data->tipo_cantidad_bandejas                 = $this->getTiposByMaster(TypeCantidadBandejas::master(),$categoria,$rubro);
+            if(count($this->getTiposByMaster(TypeCantidadBandejas::master(),'tipo_cantidad_bandejas_id',$categoria,$rubro))>0){
+                $data->tipo_cantidad_bandejas                 = $this->getTiposByMaster(TypeCantidadBandejas::master(),'tipo_cantidad_bandejas_id',$categoria,$rubro);
             }
 
-            if(count($this->getTiposByMaster(TypeCantidadCajones::master(),$categoria,$rubro))>0){
-                $data->tipo_cantidad_cajones                 = $this->getTiposByMaster(TypeCantidadCajones::master(),$categoria,$rubro);
+            if(count($this->getTiposByMaster(TypeCantidadCajones::master(),'tipo_cantidad_cajones_id',$categoria,$rubro))>0){
+                $data->tipo_cantidad_cajones                 = $this->getTiposByMaster(TypeCantidadCajones::master(),'tipo_cantidad_cajones_id',$categoria,$rubro);
             }
 
-            if(count($this->getTiposByMaster(TypeMaterial::master(),$categoria,$rubro))>0){
-                $data->tipo_material                         = $this->getTiposByMaster(TypeMaterial::master(),$categoria,$rubro);
+            if(count($this->getTiposByMaster(TypeMaterial::master(),'tipo_material_id',$categoria,$rubro))>0){
+                $data->tipo_material                         = $this->getTiposByMaster(TypeMaterial::master(),'tipo_material_id',$categoria,$rubro);
             }
         }
 
@@ -271,25 +271,39 @@ class HomeController  extends Controller
     }
 
 
-    public function getTiposByMaster($master,$categoria,$rubro){
+    public function getTiposByMaster($master,$columna,$categoria,$rubro){
         $tipos = Tipos::byMasterId($master)->get();
         $response = [];
         foreach ($tipos as $tipo) {
             $row = new \stdClass();
-            $productos = Producto::where('tipo_cerradura',$tipo->id)
-                ->orWhere('tipo_cantidad_puertas_id',$tipo->id)
-                ->orWhere('tipo_cantidad_cuerpos_id',$tipo->id)
-                ->orWhere('tipo_cantidad_cajones_id',$tipo->id)
-                ->orWhere('tipo_material_id',$tipo->id)
-                ->orWhere('tipo_cantidad_bandejas_id',$tipo->id);
 
-                if($categoria){
-                    $productos =  $productos->where('categoria_id',$categoria->id);
-                }
+           // dd($categoria,$rubro);
+            if($categoria){
+                $productos =  Producto::where('categoria_id',$categoria->id);
+            }
 
-                if($rubro){
-                    $productos =  $productos->where('rubro_id',$rubro->id);
-                }
+            if($rubro){
+                $productos =  Producto::where('rubro_id',$rubro->id);
+            }
+            $productos =  $productos->Where($columna,$tipo->id);
+            /*if($master==1){
+                $productos =  $productos->Where('tipo_cantidad_puertas_id',$tipo->id);
+            }
+            if($master==2){
+                $productos =  $productos->Where('tipo_cantidad_cuerpos_id',$tipo->id);
+            }
+            if($master==3){
+                $productos =  $productos->Where('tipo_cantidad_cajones_id',$tipo->id);
+            }
+            if($master==4){
+                $productos =  $productos->Where('tipo_material_id',$tipo->id);
+            }
+            if($master==5){
+                $productos =  $productos->Where('tipo_cantidad_bandejas_id',$tipo->id);
+            }
+            if($master==6){
+                $productos =  $productos->Where('tipo_cerradura',$tipo->id);
+            }*/
                  $productos = $productos->count();
             if($productos>0){
                 $row->id           = $tipo->id;
