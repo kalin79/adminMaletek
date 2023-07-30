@@ -27,7 +27,7 @@
 
             </td>
             <td>
-                {{ $blog->descripcion_corta }}
+                {!! $blog->descripcion_corta !!}
             </td>
             <td>
                 {{ $blog->fecha }}
