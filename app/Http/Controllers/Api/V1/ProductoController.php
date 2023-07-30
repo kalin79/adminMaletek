@@ -147,7 +147,7 @@ class ProductoController  extends Controller
         $response = [];
         if($categoria || $rubro){
 
-            $data = Producto::where('categoria_id',$categoria->id)->activos();
+            $data = Producto::activos();
             if($categoria){
                 $data =  $data->where('categoria_id',$categoria->id);
             }
