@@ -133,7 +133,7 @@ class ProductoController  extends Controller
     }
 
     public function catalogo(Request $request){
-
+        //dd($request->all());
         $categoria = null;
         $rubro = null;
         if(isset($request->slug_categoria)){
@@ -143,6 +143,7 @@ class ProductoController  extends Controller
         if(isset($request->slug_rubro)){
             $rubro = Rubros::where('slug',$request->rubro_slug)->activos()->first();
         }
+
         $response = [];
         if($categoria || $rubro){
 
@@ -154,10 +155,13 @@ class ProductoController  extends Controller
             if($rubro){
                 $data =  $data->where('rubro_id',$rubro->id);
             }
+
             if(!empty($request->tipoCerradura)){
                 $array_tipo_cerradura_id= explode(',',$request->tipoCerradura);
+                //dd($array_tipo_cerradura_id);
                 $data = $data->where(function($query) use ($array_tipo_cerradura_id){
                     foreach ($array_tipo_cerradura_id as $key => $tipo_cerradura_id) {
+
                         $query->orWhere('tipo_cerradura', $tipo_cerradura_id);
                     }
                 });
@@ -172,6 +176,7 @@ class ProductoController  extends Controller
                     }
                 });
             }
+
             if(!empty($request->tipoCantidadCuerpos)){
                 $array_tipo_cantidad_cuerpos_id= explode(',',$request->tipoCantidadCuerpos);
                 $data = $data->where(function($query) use ($array_tipo_cantidad_cuerpos_id){
@@ -223,11 +228,10 @@ class ProductoController  extends Controller
 
             $data=$data->get();
 
-
-            // dd($data);
+             
             if ($data && count($data) > 0) {
 
-                if($array_colores_id>0){
+                if(count($array_colores_id)>0){
 
                     foreach ($data as $producto) {
 
