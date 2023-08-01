@@ -354,7 +354,7 @@ class ProductoController  extends Controller
             }
 
             if(isset($request->slug_rubro)){
-                $rubro = Rubros::where('slug',$request->rubro_slug)->activos()->first();
+                $rubro = Rubros::where('slug',$request->slug_rubro)->activos()->first();
             }
             $response = [];
             if($categoria || $rubro){
