@@ -355,12 +355,14 @@ class ProductoController  extends Controller
             if(isset($request->slug_rubro)){
                 $rubro = Rubros::where('slug',$request->slug_rubro)->activos()->first();
             }
+
+            //dd($categoria,$rubro);
             $response = [];
             if($categoria || $rubro){
 
 
 
-                $products = Producto::where('categoria_id',$categoria->id)->where('title_large', 'like', '%' . $request->valor . '%')
+                $products = Producto::where('title_large', 'like', '%' . $request->valor . '%')
                     ->orWhere('code', 'like', '%' . $request->valor . '%')
                     ->orWhere('slug', 'like', '%' . $request->valor . '%')
                     ->orWhere('description', 'like', '%' . $request->valor . '%')
