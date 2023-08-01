@@ -94,7 +94,9 @@ class GaleryProductController extends Controller
     public function productByRubro(Request $request){
         $rubro = Rubros::where('slug',$request->rubro_slug)->activos()->first();
         if($rubro){
-            $products = Producto::where('rubro_id',$rubro->id)->activos();
+            $products = Producto::whereHas('rubros',function ($q) use ($rubro){
+                $q->where('rubro_id',$rubro->id);
+            })->activos();
             $data_rubro= $this->rubro($rubro->id);
             $products = $products->paginate(8);
             $data = [];
