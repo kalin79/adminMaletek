@@ -22,7 +22,7 @@ class SendContactanos extends Mailable
 
     public function build()
     {
-        $address = 'infodev@codegraph.pe';
+        $address = 'enviocontacto@maletek.com.pe';
         $subject = 'Contactanos';
         $name = "Maletek";
 

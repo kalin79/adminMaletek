@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Cotizaciones extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-    use Audit;
+    //use SoftDeletes;
+    //use Audit;
 
-    protected $table = 'suscripciones';
+    protected $table = 'cotizaciones';
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';

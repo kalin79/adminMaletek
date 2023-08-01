@@ -33,7 +33,9 @@ use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
 use Exception;
+use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController  extends Controller
 {
@@ -362,12 +364,12 @@ class HomeController  extends Controller
 
     public function storeCotizacion(Request $request)
     {
-        DB::beginTransaction();
-        try{
+        /*DB::beginTransaction();
+        try{*/
 
             $cotizaciones=Cotizaciones::create($request->all());
 
-            $data['producto']=Producto::find($cotizaciones->producto_id)->titulo_large;
+            $data['producto']=Producto::find($cotizaciones->producto_id)->title_large;
             $data['cantidad']=$cotizaciones->cantidad;
             $data['nombres_apellidos']=$cotizaciones->nombres_apellidos;
             $data['numero_documento']=$cotizaciones->numero_documento;
@@ -376,19 +378,18 @@ class HomeController  extends Controller
             $data['comentario']=$cotizaciones->comentario;
 
             //Financiamiento::create($request->all());
-
             $email = ["ventas@maletek.com.pe",'c.augusto.espinoza@gmail.com'];
             //$email="pedromollehuanca@gmail.com";
 
             Mail::to($email)->send(new SendCotizaciones($data));
-            DB::commit();
+         /*   DB::commit();
         } catch(Exception $exc){
             DB::rollBack();
             $status = 0;
             $code   = 500;
             $data   = $exc;
             return $this->apiResponse($status,$code,$data);
-        }
+        }*/
 
         $row                = new \stdClass();
         $row->msg           = 'Cotización realizada correctamente';
@@ -402,8 +403,8 @@ class HomeController  extends Controller
 
     public function storeContacto(Request $request)
     {
-        DB::beginTransaction();
-        try{
+        /*DB::beginTransaction();
+        try{*/
             $contacto=Contacto::create($request->all());
 
             $data['nombres_apellidos']=$contacto->nombres_apellidos;
@@ -415,17 +416,18 @@ class HomeController  extends Controller
             //Financiamiento::create($request->all());
             //    dd($data);
             $email = ["ventas@maletek.com.pe",'c.augusto.espinoza@gmail.com'];
+
             //$email="pedromollehuanca@gmail.com";
 
             Mail::to($email)->send(new SendContactanos($data));
-            DB::commit();
+           /* DB::commit();
         } catch(Exception $exc){
             DB::rollBack();
             $status = 0;
             $code   = 500;
             $data   = $exc;
             return $this->apiResponse($status,$code,$data);
-        }
+        }*/
 
         $row                = new \stdClass();
         $row->msg           = 'Contacto realizada correctamente';

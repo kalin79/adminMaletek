@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contacto extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-    use Audit;
+    //use SoftDeletes;
+    //use Audit;
 
-    protected $table = 'suscripciones';
+    protected $table = 'contactanos';
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';

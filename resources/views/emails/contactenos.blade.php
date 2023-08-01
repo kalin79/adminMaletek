@@ -82,7 +82,7 @@
                     <ul>
                         <li><b>Nombres y Apellidos    :</b> {{ $data["nombres_apellidos"] }}</li>
                         <li><b>DNI ó RUC    :</b> {{ $data["numero_documento"] }}</li>
-                        <li><b>Correo  :</b> {{ $data["correo"] }}</li>
+                        <li><b>Correo  :</b> {{ $data["email"] }}</li>
                         <li><b>Nro. Celular     :</b> {{ $data["celular"] }}</li>
                         <li><b>Comentario  :</b> {{ $data["comentario"] }}</li>
 
