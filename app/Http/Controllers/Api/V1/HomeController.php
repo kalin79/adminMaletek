@@ -229,7 +229,7 @@ class HomeController  extends Controller
         if(isset($request->slug_rubro)){
             $rubro = Rubros::where('slug',$request->slug_rubro)->activos()->first();
         }
-        //dd($categoria , $rubro);
+
         $data= new \stdClass();
         if($categoria || $rubro){
             if($this->getColoresFiltro($categoria,$rubro)>0){
@@ -278,14 +278,17 @@ class HomeController  extends Controller
         foreach ($tipos as $tipo) {
             $row = new \stdClass();
 
-           // dd($categoria,$rubro);
+
             if($categoria){
                 $productos =  Producto::activos()->where('categoria_id',$categoria->id);
             }
 
             if($rubro){
-                $productos =  Producto::activos()->where('rubro_id',$rubro->id);
+                $productos =  Producto::whereHas('rubros',function ($q) use ($rubro){
+                    $q->where('rubro_id',$rubro->id);
+                })->activos();
             }
+
             $productos =  $productos->Where($columna,$tipo->id);
             /*if($master==1){
                 $productos =  $productos->Where('tipo_cantidad_puertas_id',$tipo->id);
@@ -333,11 +336,13 @@ class HomeController  extends Controller
                 $producto_ids = ProductoColor::where('color_id',$color->id)->pluck('producto_id')->toArray();
                 $productos = Producto::whereIn('id',$producto_ids);
                 if($categoria){
-                    $productos =  $productos->where('categoria_id',$categoria->id);
+                    $productos =  $productos->where('categoria_id',$categoria->id)->activos();
                 }
 
                 if($rubro){
-                    $productos =  $productos->where('rubro_id',$rubro->id);
+                    $productos =  $productos->whereHas('rubros',function ($q) use ($rubro){
+                        $q->where('rubro_id',$rubro->id);
+                    })->activos();
                 }
 
                 $productos =  $productos->count();
