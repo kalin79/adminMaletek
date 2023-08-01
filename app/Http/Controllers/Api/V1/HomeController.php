@@ -377,7 +377,7 @@ class HomeController  extends Controller
 
             //Financiamiento::create($request->all());
 
-            $email = ["seguroscamilacorp@gmail.com","hola@motopopular.com",'c.augusto.espinoza@gmail.com'];
+            $email = ["ventas@maletek.com.pe",'c.augusto.espinoza@gmail.com'];
             //$email="pedromollehuanca@gmail.com";
 
             Mail::to($email)->send(new SendCotizaciones($data));
@@ -414,7 +414,7 @@ class HomeController  extends Controller
 
             //Financiamiento::create($request->all());
             //    dd($data);
-            $email = ["seguroscamilacorp@gmail.com","hola@motopopular.com",'c.augusto.espinoza@gmail.com'];
+            $email = ["ventas@maletek.com.pe",'c.augusto.espinoza@gmail.com'];
             //$email="pedromollehuanca@gmail.com";
 
             Mail::to($email)->send(new SendContactanos($data));

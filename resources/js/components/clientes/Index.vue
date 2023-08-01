@@ -1,69 +1,69 @@
 <template>
     <div class="boxClientes">
-        <h4>Clientes que confían en nosotros...</h4>
+        <h4>Clientes que confían en nosotros..11.</h4>
         <div class="boxLogos">
             <div class="sliderContainer">
                 <div class="owl-carousel owl-theme owl-carouselBannerHomeLogos">
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie1.svg" alt="Real Plaza"  />
+                        <img src="/frontend/images/logos/01.png" alt="Real Plaza"  />
                     </a>
                     <a href="#" target="_blank" >
-                        <img src="/frontend/images/clie2.svg" alt="Bembos" />
+                        <img src="/frontend/images/logos/02.png" alt="Bembos" />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie3.svg" alt="Cencosud"  />
+                        <img src="/frontend/images/logos/03.png" alt="Cencosud"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie4.svg" alt="Sodimac Home Center"  />
+                        <img src="/frontend/images/logos/04.png" alt="Sodimac Home Center"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie5.svg" alt="Super Mercados Peruanos SA"  />
+                        <img src="/frontend/images/logos/05.png" alt="Super Mercados Peruanos SA"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie6.svg" alt="Gloria"  />
+                        <img src="/frontend/images/logos/06.png" alt="Gloria"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie7.svg" alt="Popeyes"  />
+                        <img src="/frontend/images/logos/07.png" alt="Popeyes"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie8.svg" alt="Mediterraneo" />
+                        <img src="/frontend/images/logos/08.png" alt="Mediterraneo" />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie9.svg" alt="Mediterraneo" />
+                        <img src="/frontend/images/logos/09.png" alt="Mediterraneo" />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie10.svg" alt="Mediterraneo" />
+                        <img src="/frontend/images/logos/10.png" alt="Mediterraneo" />
                     </a>
 
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie11.svg" alt="Real Plaza"  />
+                        <img src="/frontend/images/logos/11.png" alt="Real Plaza"  />
                     </a>
                     <a href="#" target="_blank" >
-                        <img src="/frontend/images/clie12.svg" alt="Bembos" />
+                        <img src="/frontend/images/logos/12.png" alt="Bembos" />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie13.svg" alt="Cencosud"  />
+                        <img src="/frontend/images/logos/13.png" alt="Cencosud"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie14.svg" alt="Sodimac Home Center"  />
+                        <img src="/frontend/images/logos/14.png" alt="Sodimac Home Center"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie15.svg" alt="Super Mercados Peruanos SA"  />
+                        <img src="/frontend/images/logos/15.png" alt="Super Mercados Peruanos SA"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie16.svg" alt="Gloria"  />
+                        <img src="/frontend/images/logos/16.png" alt="Gloria"  />
                     </a>
                     <a href="#" target="_blank">
-                        <img src="/frontend/images/clie17.svg" alt="Popeyes"  />
-                    </a>
-                    <a href="#" target="_blank">
-                        <img src="/frontend/images/clie18.svg" alt="Mediterraneo" />
-                    </a>
-                    <a href="#" target="_blank">
-                        <img src="/frontend/images/clie19.svg" alt="Mediterraneo" />
+                        <img src="/frontend/images/logos/17.png" alt="Popeyes"  />
                     </a>
                     <!-- <a href="#" target="_blank">
-                        <img src="/frontend/images/clie20.svg" alt="Mediterraneo" />
+                        <img src="/frontend/images/logos/18.png" alt="Mediterraneo" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="/frontend/images/logos/19.png" alt="Mediterraneo" />
+                    </a> -->
+                    <!-- <a href="#" target="_blank">
+                        <img src="/frontend/images/logos/clie20.png" alt="Mediterraneo" />
                     </a> -->
                     
                 </div>
