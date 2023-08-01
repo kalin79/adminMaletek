@@ -153,8 +153,11 @@ class ProductoController  extends Controller
             }
 
             if($rubro){
-                $data =  $data->where('rubro_id',$rubro->id);
+                $data =  $data->whereHas('rubros',function ($q) use ($rubro){
+                    $q->where('rubro_id',$rubro->id);
+                });
             }
+
 
             if(!empty($request->tipoCerradura)){
                 $array_tipo_cerradura_id= explode(',',$request->tipoCerradura);
