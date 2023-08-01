@@ -371,7 +371,9 @@ class ProductoController  extends Controller
                 }
 
                 if($rubro){
-                    $products =  $products->where('rubro_id',$rubro->id);
+                    $products =  $products->whereHas('rubros',function ($q) use ($rubro){
+                            $q->where('rubro_id',$rubro->id);
+                        });
                 }
                 $products=$products->paginate(8);
                 $data = [];
