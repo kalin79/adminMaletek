@@ -23,7 +23,7 @@
                       placeholder="Ingresar Description" ></textarea>
         </div>
         <div class="row">
-            <div class="form-group col-sm-4">
+            <div class="form-group col-sm-4" style="display:none">
                 <label for="button">Acción</label>
                 <input type="text" id="button" class="form-control"
                        name="button"
@@ -32,7 +32,7 @@
 
             </div>
 
-            <div class="form-group col-sm-8">
+            <div class="form-group col-sm-12" >
                 <label for="link">Link </label>
                 <input type="text" id="link" class="form-control"
                        name="link"
@@ -42,13 +42,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="avatar">Imagen (*) </label>
+            <label for="avatar">Imagen Derecha (*) </label>
             <div class="custom-file">
                 <input accept="image/*" name="images" class="custom-file-input" id="avatar"
                        lang="es" type="file" >
                 <label id="file-desktop" class="custom-file-label" for="avatar"></label>
             </div>
-            <small>* [1440*550] Sólo imágenes JPG y PNG, Máximo de 1M</small>
+            <small>* [946*641]px Aproximado</small>
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -61,12 +61,13 @@
         </div>
 
         <div class="form-group">
-            <label for="image_mobile">Imagen Movil(*) </label>
+            <label for="image_mobile">Imagen Logo(*) </label>
             <div class="custom-file">
                 <input accept="image/*" name="image_mobile" class="custom-file-input" id="image_mobile"
                        lang="es" type="file" >
                 <label id="file-mobile" class="custom-file-label" for="image_mobile"></label>
             </div>
+            <small>* [140*105]px Aproximado</small>
         </div>
         <div class="row">
             <div class="col-sm-12">

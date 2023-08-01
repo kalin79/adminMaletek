@@ -347,7 +347,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="form-group col-sm-6">
+                                        <div class="form-group col-sm-6" style="display: none">
                                             <label for="archivo">Imagen cover</label>
                                             <div class="custom-file">
                                                 <input accept="image/*" class="custom-file-input" id="cover"
@@ -369,7 +369,7 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>Galería de Imágenes</p>
+                                            <p>Galería de Imágenes [295x329]px</p>
                                         </div>
                                     </div>
                                     <div class="row">

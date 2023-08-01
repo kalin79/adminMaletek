@@ -26,7 +26,7 @@
                             lang="es" type="file" name="imagen">
                         <label id="file-image" class="custom-file-label" for="avatar"></label>
                     </div>
-                    <small>* [168 x 172] Sólo imágenes JPG y PNG, Máximo de 1M</small>
+                    <small>* [295x329]px Sólo imágenes JPG y PNG, Máximo de 1M</small>
                     <div class="font-icon-wrapper float-left mr-3 mb-3">
                         <img src="" class="rounded-circle img-custom"
                             id='img-upload'

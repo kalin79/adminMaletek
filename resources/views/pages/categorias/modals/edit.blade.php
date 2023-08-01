@@ -11,7 +11,7 @@
                    type="text">
         </div>
         <div class="form-group">
-            <label for="sub_title">Subtitulo</label>
+            <label for="sub_title">Meta T&iacute;tulo</label>
             <label class="field">
                 <input class="form-control gui-input" id="sub_title" name="sub_title" placeholder=""
                         value="{{$category->sub_title}}"
@@ -20,18 +20,18 @@
 
         </div>
         <div class="form-group">
-            <label for="description">Descripción</label>
+            <label for="description">Meta Descripcion</label>
             <textarea class="form-control" name="description" id="description">{{$category->description}}</textarea>
         </div>
         @if($category->parent_id == 0)
         <div class="form-group">
-            <label for="avatar">Poster</label>
+            <label for="avatar">Imagen PC</label>
             <div class="custom-file">
                 <input accept="image/*" class="custom-file-input" id="poster"
                        lang="es" type="file" name="images">
                 <label id="file-image" class="custom-file-label" for="avatar"></label>
             </div>
-            <small>* [420*210] Sólo imágenes JPG y PNG, Máximo de 1M</small>
+            <small>* [1440*329]</small>
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -49,6 +49,7 @@
                            lang="es" type="file" name="icon">
                     <label id="file-icono" class="custom-file-label" for="avatar"></label>
                 </div>
+                <small>* [390*472]</small>
             </div>
             <div class="row" >
                 <div class="col-sm-12">
