@@ -217,6 +217,7 @@ class ProductoController  extends Controller
                 });
             }
 
+
             $array_colores_id = [];
             if(!empty($request->colores)){
                 $array_colores_id= explode(',',$request->colores);
@@ -236,13 +237,14 @@ class ProductoController  extends Controller
             if ($data && count($data) > 0) {
 
                 if(count($array_colores_id)>0){
-
+                    //dd($data);
                     foreach ($data as $producto) {
 
                         $productos_color_image = ProductoColorImage::where('is_default',1)->whereHas('productoColor',function($query)use($producto,$array_colores_id){
                                 $query->where('producto_id',$producto->id);
                                 $query->whereIn('color_id',$array_colores_id);
                             })->get();
+                        dd($productos_color_image);
                         foreach ($productos_color_image as $image_default){
                             $row = new \stdClass();
                             $row->id                    = $producto->id;
