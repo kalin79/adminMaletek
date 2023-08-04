@@ -7,6 +7,7 @@ use App\Models\BannerCategory;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Producto;
+use App\Models\ProductoCerradura;
 use App\Models\Rubros;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -184,6 +185,8 @@ class GaleryProductController extends Controller
 
         return $response;
     }
+
+
 
     public function rubro($rubro_id){
 

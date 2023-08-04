@@ -16,6 +16,7 @@ use App\Models\Colores;
 use App\Models\Marcas;
 use App\Models\ProductImage;
 use App\Models\Producto;
+use App\Models\ProductoCerradura;
 use App\Models\ProductoColor;
 use App\Models\ProductoRubro;
 use App\Models\ProductoTipos;
@@ -89,6 +90,11 @@ class ProductoController extends Controller
         foreach ($rubro_ids as $key => $rubro_id) {
             ProductoRubro::create(['producto_id'=>$product->id,'rubro_id'=>$rubro_id]);
         }
+
+        $tipo_cerraduras_ids = $request->tipo_cerraduras_ids ?? [];
+        foreach ($tipo_cerraduras_ids as $key => $tipo_cerraduras_id) {
+            ProductoCerradura::create(['producto_id'=>$product->id,'tipo_cerradura_id'=>$tipo_cerraduras_id]);
+        }
         $product->updateFichaTecnica($request->file('ficha_pdf'));
         $product->updateImageCover($request->file('imagen_cover'));
         $post_route = route('producto.index');
@@ -108,9 +114,11 @@ class ProductoController extends Controller
         $rubros = Rubros::activos()->get();
         $colores_producto =$product->colores()->get()->pluck('color_id')->toArray();
         $rubros_producto =$product->rubros()->get()->pluck('rubro_id')->toArray();
+        $cerradura_producto =$product->tipoCerraduras()->get()->pluck('tipo_cerradura_id')->toArray();
         //dd($rubros_producto);
         $categorias = Category::activos()->get();
-        return view('pages.producto.edit', compact('rubros_producto','tipos_cantidad_puertas','tipos_cantidad_cuerpos','tipos_cantidad_cajones','tipos_material','tipos_cantidad_bandejas', 'colores', 'product','colores_producto','categorias','rubros','tipos_cerradura'));
+        return view('pages.producto.edit', compact('rubros_producto','tipos_cantidad_puertas','tipos_cantidad_cuerpos','tipos_cantidad_cajones','tipos_material',
+            'tipos_cantidad_bandejas', 'colores', 'product','colores_producto','categorias','rubros','tipos_cerradura','cerradura_producto'));
     }
     /**
      * Update the specified resource in storage.
@@ -186,6 +194,32 @@ class ProductoController extends Controller
 
                 }
             }
+
+        if($request->tipo_cerraduras_ids){
+            /****************Eliminando areas ***********/
+            $producto_cerraduras = $product->tipoCerraduras();
+
+            $tipo_cerraduras = Tipos::whereIn("id",$request->tipo_cerraduras_ids)->get()->pluck('id')->toArray();
+
+            $producto_tipos_data = ProductoCerradura::where("producto_id",$product->id)->whereIn('tipo_cerradura_id',$tipo_cerraduras)->get()->pluck('producto_id','id')->toArray();
+            $array_producto_cerradura_data_id = $producto_cerraduras ? $producto_cerraduras->pluck('id')->toArray() : [];
+            $array_tipos_data_id= count($producto_tipos_data) ? array_keys($producto_tipos_data):[];
+            $producto_tipos_id_delete = array_diff($array_producto_cerradura_data_id,$array_tipos_data_id);
+            if(count($producto_tipos_id_delete)){
+                $product->tipoCerraduras()->where("producto_id",$product->id)->whereIn('id',$producto_tipos_id_delete)->delete();
+            }
+            foreach($request->tipo_cerraduras_ids as $tipo_cerradura_id){
+
+                $producto_tipo_cerradura = ProductoCerradura::where('producto_id',$product->id)->where('tipo_cerradura_id',$tipo_cerradura_id)->first();
+                if(!$producto_tipo_cerradura){
+                    ProductoCerradura::create([
+                        'producto_id'=> $product->id,
+                        'tipo_cerradura_id'=>$tipo_cerradura_id
+                    ]);
+                }
+
+            }
+        }
 
             $product->updateFichaTecnica($request->file('ficha_pdf'));
             $product->updateImageCover($request->file('imagen_cover'));

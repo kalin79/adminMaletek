@@ -205,7 +205,7 @@
                                                 <div class="form-group overflow-auto vh-75 ">
                                                     <label for="cmb_tipo_cerradura"><b>Tipo cerradura</b></label>
                                                     <label class="field select">
-                                                        <select id="cmb_tipo_cerradura" name="tipo_cerradura" class=" form-control " placeholder="Seleccione" style="width: 100% !important">
+                                                        <select id="cmb_tipo_cerradura" name="tipo_cerraduras_ids[]" multiple="" class=" form-control " placeholder="Seleccione" style="width: 100% !important">
                                                             <option></option>
                                                             @foreach ($tipos_cerradura as $tipo_cerradura)
                                                                 <option value="{{$tipo_cerradura->id}}">{{$tipo_cerradura->name}}</option>
