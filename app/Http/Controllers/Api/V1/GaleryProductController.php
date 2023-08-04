@@ -43,7 +43,7 @@ class GaleryProductController extends Controller
             $data_categoria= $this->categories($categoria->id);
 
 
-            $products = $products->paginate(8);
+            $products = $products->paginate(200);
             $data = [];
             foreach ($products as $product){
                 $image_galeria_inicial = $product->galleries()->orderBy('order', 'asc')->first() ;
@@ -98,7 +98,7 @@ class GaleryProductController extends Controller
                 $q->where('rubro_id',$rubro->id);
             })->activos();
             $data_rubro= $this->rubro($rubro->id);
-            $products = $products->paginate(8);
+            $products = $products->paginate(200);
             $data = [];
             foreach ($products as $product){
                 $image_galeria_inicial = $product->galleries()->orderBy('order', 'asc')->first() ;
