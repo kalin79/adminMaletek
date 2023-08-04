@@ -66,7 +66,13 @@ jQuery(function() {
     var rules = $.extend(true, {}, customize_rules);
     rules.rules = {
         title: { required: true }
-    }
+    };
+
+    $(document).on('focusin', function(e) {
+        if ($(e.target).closest(".mce-window").length) {
+            e.stopImmediatePropagation();
+        }
+    });
 
     ModalCRUD.create({
         title: 'Articulo',
@@ -343,6 +349,11 @@ var load_functions = function() {
         }
     });
     tinymce.remove();
+    $(document).on('focusin', function(e) {
+        if ($(e.target).closest(".mce-window").length) {
+            e.stopImmediatePropagation();
+        }
+    });
     tinymce.init({
         selector: '.tinymce',
         height: 100,
@@ -353,11 +364,19 @@ var load_functions = function() {
         ],
         toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor',
         setup: function(editor) {
+            $(document).on('focusin', function(e) {
+                if ($(e.target).closest(".mce-window").length) {
+                    e.stopImmediatePropagation();
+                }
+            });
             editor.on('change', function() {
                 tinymce.triggerSave();
             });
+
         }
     });
+
+
 }
 
 var update_oder = function(page_id_array) {

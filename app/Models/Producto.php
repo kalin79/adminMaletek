@@ -224,8 +224,8 @@ class Producto extends Model
     public function tipoCantidadBandejas(){
         return $this->hasOne(Tipos::class,'id','tipo_cantidad_bandejas_id');
     }
-    public function tipoCerradura(){
-        return $this->hasOne(Tipos::class,'id','tipo_cerradura');
+    public function tipoCerraduras(){
+        return $this->hasMany(ProductoCerradura::class,'producto_id');
     }
 
     public function tipoMaterial(){

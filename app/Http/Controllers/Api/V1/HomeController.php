@@ -291,7 +291,15 @@ class HomeController  extends Controller
                 })->activos();
             }
 
-            $productos =  $productos->Where($columna,$tipo->id);
+            if($columna=='tipo_cerradura'){
+                $productos =  $productos->whereHas('tipoCerraduras',function ($q) use ($tipo){
+                    $q->where('tipo_cerradura_id',$tipo->id);
+                });
+            }else{
+                $productos =  $productos->Where($columna,$tipo->id);
+            }
+
+
             /*if($master==1){
                 $productos =  $productos->Where('tipo_cantidad_puertas_id',$tipo->id);
             }

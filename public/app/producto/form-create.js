@@ -63,6 +63,7 @@ jQuery(function() {
     $("#cmb_tipo_cerradura").select2({
         theme: "bootstrap4",
         placeholder: "Seleccione",
+        multiple: true
     })
 
     $("#cmb_rubros").select2({

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Marcas;
 use App\Models\Producto;
+use App\Models\ProductoCerradura;
 use App\Models\ProductoColorImage;
 use App\Models\ProductoLike;
 use App\Models\Rubros;
@@ -65,7 +66,7 @@ class ProductoController  extends Controller
             $row->material = $producto->tipoMaterial? $producto->tipoMaterial->name : '';
             $row->pintura = $producto->pintura;
             $row->puerta_reforsada = $producto->puerta_reforsada == 1? 'SI' : 'NO';
-            $row->tipo_cerradura = $producto->tipoCerradura ? $producto->tipoCerradura ->name : '';
+            $row->tipo_cerradura = $this->tipoCerraduras($producto);
             $row->cuerpos = $producto->tipoCantidadCuerpos ? $producto->tipoCantidadCuerpos ->name : '';
             $row->cantidad_bandejas = $producto->tipoCantidadBandejas ? $producto->tipoCantidadBandejas ->name : '';
             $row->cantidad_cajones = $producto->tipoCantidadCajones ? $producto->tipoCantidadCajones ->name : '';
@@ -78,6 +79,22 @@ class ProductoController  extends Controller
             $row->ficha_tecnica = !empty($producto->ficha_tecnica) ? asset('images/products/' . $producto->id . '/documentos/' . $producto->ficha_tecnica) : null;
         }
         return $row;
+    }
+
+    public function tipoCerraduras($producto){
+        $response = [];
+        $data = ProductoCerradura::where('producto_id',$producto->id)->get();
+
+        if ($data && count($data) > 0) {
+            foreach ($data as $tipo_cerradura) {
+                $row = new \stdClass();
+                $row->id = $tipo_cerradura->id;
+                $row->tipo_cerradura = $tipo_cerradura->tipoCerradura->name ? trim($tipo_cerradura->tipoCerradura->name): '';
+                $response[] = $row;
+            }
+        }
+
+        return $response;
     }
 
     public function galleryProduct(Producto $product)
@@ -163,11 +180,20 @@ class ProductoController  extends Controller
             if(!empty($request->tipoCerradura)){
                 $array_tipo_cerradura_id= explode(',',$request->tipoCerradura);
                 //dd($array_tipo_cerradura_id);
-                $data = $data->where(function($query) use ($array_tipo_cerradura_id){
+                /*$data = $data->where(function($query) use ($array_tipo_cerradura_id){
                     foreach ($array_tipo_cerradura_id as $key => $tipo_cerradura_id) {
 
                         $query->orWhere('tipo_cerradura', $tipo_cerradura_id);
                     }
+                });*/
+
+                $data = $data->whereHas('tipoCerraduras',function($query) use ($array_tipo_cerradura_id){
+
+                    $query->where(function($queryB) use ($array_tipo_cerradura_id){
+                        foreach ($array_tipo_cerradura_id as $key => $tipo_cerradura_id) {
+                            $queryB->orWhere('tipo_cerradura_id', $tipo_cerradura_id);
+                        }
+                    });
                 });
             }
 
@@ -217,6 +243,7 @@ class ProductoController  extends Controller
                 });
             }
 
+
             $array_colores_id = [];
             if(!empty($request->colores)){
                 $array_colores_id= explode(',',$request->colores);
@@ -236,13 +263,14 @@ class ProductoController  extends Controller
             if ($data && count($data) > 0) {
 
                 if(count($array_colores_id)>0){
-
+                    //dd($data);
                     foreach ($data as $producto) {
 
                         $productos_color_image = ProductoColorImage::where('is_default',1)->whereHas('productoColor',function($query)use($producto,$array_colores_id){
                                 $query->where('producto_id',$producto->id);
                                 $query->whereIn('color_id',$array_colores_id);
                             })->get();
+                        dd($productos_color_image);
                         foreach ($productos_color_image as $image_default){
                             $row = new \stdClass();
                             $row->id                    = $producto->id;
@@ -262,9 +290,9 @@ class ProductoController  extends Controller
                     }
                 }else{
                     foreach ($data as $producto) {
-                        $image_default = ProductoColorImage::where('is_default',1)->whereHas('productoColor',function($query)use($producto){
-                            $query->where('producto_id',$producto->id);
-                        })->first();
+                        $image_galeria_inicial = $producto->galleries()->orderBy('order', 'asc')->first() ;
+
+                        $image_default=$image_galeria_inicial? $image_galeria_inicial->image : null;
 
                         $row = new \stdClass();
                         $row->id                    = $producto->id;
@@ -275,7 +303,7 @@ class ProductoController  extends Controller
                         $row->codigo                = $producto->code ? trim($producto->code): '';
                         $row->slug                  = $producto->slug ? trim($producto->slug): '';
                         //$row->image                 = $producto->path_image_default;
-                        $row->image         = !empty($image_default->imagen) ? asset('images/products/'.$producto->id.'/'.$image_default->productoColor->color->nombre.'/' . $image_default->imagen) : '';
+                        $row->image         = $image_default ? asset('images/products/' .$producto->id.'/'.$image_default) : '';
                         $row->image_cover           = !empty($producto->image_cover) ? asset('images/products/'.$producto->id.'/' . $producto->image_cover) : '';
                         $row->link                  = 'producto/'.trim($producto->slug);
                         $row->colores       = $this->productoColores($producto);
