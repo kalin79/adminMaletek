@@ -270,7 +270,6 @@ class ProductoController  extends Controller
                                 $query->where('producto_id',$producto->id);
                                 $query->whereIn('color_id',$array_colores_id);
                             })->get();
-                        dd($productos_color_image);
                         foreach ($productos_color_image as $image_default){
                             $row = new \stdClass();
                             $row->id                    = $producto->id;
